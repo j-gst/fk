@@ -7,6 +7,7 @@
 		
 		</div>
 	</div><!-- ende class=site -->
+	<script type="text/javascript" src="../js/main.js"></script>
 	</body>
 
 

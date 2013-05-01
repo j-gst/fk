@@ -9,15 +9,16 @@ abstract class Controller //Abstrakte Klasse Controller, von der die einzelnen C
 	protected $displayData = array();
 	protected $db = null;
 	protected $conf = null;
-    protected static $errorMsg = "Fehler";
+    protected  $errorMsg = "Fehler";
   
 /*
  * ?? Pfeile verwirren mich. Hier geht es um die DB, was passiert hier?
  */
- public function  __construct($db , $config)
+ public function  __construct($db , $config, $errorMsg = "")
   {
 	$this->db = $db;
     $this->conf = $config;
+	$this->errorMsg = $errorMsg;
   }
 
 
@@ -33,8 +34,18 @@ abstract class Controller //Abstrakte Klasse Controller, von der die einzelnen C
         $db = new \classes\MysqlDB($conf->DB_host, $conf->DB_user, // ?? da ich die Variable conf schon nicht ganz verstehe, hier auch nur Bahnhof ??
 		                           $conf->DB_pw, $conf->DB_db, $conf->DB_showErrors); // ??  Die Pfeile verwirren mich generell noch ??
  	  
+	    // gibt es einen Datenbankfehler?
+		$dbErrors = $db->getErrorList();
+		if ($dbErrors[0]["no"] > 0) {
+			// Fehlerseite
+			$target = "error";
+			// Fehlermeldung
+			$errorMsg = "Datenbankfehler!";
+		}
 		
 		$returnObj = null;
+		
+		
 		if($target === null && isset($_REQUEST['page'])){ // ?? drei === ??
 			$target = $_REQUEST['page'];
 		}
@@ -55,8 +66,11 @@ abstract class Controller //Abstrakte Klasse Controller, von der die einzelnen C
 				case ('register'):
 					$controller = '\controllers\Register';
 					break;
+				case ('error'):
+					$controller = '\controllers\Error';
+					break;					
 				default:
-				    //$self::errorMsg = "Diese Seite existiert leider nicht!";
+				    $errorMsg = "Diese Seite existiert leider nicht!";
 					$controller = '\controllers\Error';
 				break;
 
@@ -67,12 +81,12 @@ abstract class Controller //Abstrakte Klasse Controller, von der die einzelnen C
 		
     if ( class_exists($controller , true) )
     {
-      $returnObj = new $controller($db, $conf);
+      $returnObj = new $controller($db, $conf,  $errorMsg);
     } 
     else 
     { 
-	  $this->errorMsg = "Diese Seite existiert leider nicht!";
-      $returnObj = new \controllers\Error();
+	  $errorMsg = "Diese Seite existiert leider nicht!";
+      $returnObj = new \controllers\Error(null, null, $errorMsg);
     }
 	return $returnObj;
  

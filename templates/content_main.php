@@ -5,7 +5,7 @@
 	
 	<!-- in der Schleife wird angeordnet, dass für jedes Bild das in der Datenbank liegt ein div class=imagearea angelegt wird 
 		und die Daten aus der Datenbak dort strukturiert eingefügt werden -->
-	<?php foreach ($displayData['images'] as $img){?>
+	<?php foreach ($displayData['images'] as $key => $img){?>
 	<div class="imagearea">
 	    <h2><?php echo $img->titel ?></h2>
 		<div class="image">
@@ -21,9 +21,15 @@
 		<div class="comment">
 			<!-- Kommentare und Bewertungen noch funktionslos -->
 		<!-- 29 Bewertungen: 4.3/5<a href=""> jetzt bewerten</a>-->
-		6 Kommentare<a href=""> lesen</a>
+		6 Kommentare
+		<a style="cursor : pointer;" id="showcomments_<?php echo $key;?>" onclick="showHideComments('commentsarea_<?php echo $key;?>','showcomments_<?php echo $key;?>' );return false;">SHOW</a><br> 
 		</div>
-	</div>
+		<div class="commentarea" id="commentsarea_<?php echo $key;?>">
+		TEST123
+		</div>
+
+	</div> <!-- imagearea -->
+
     <?php } // end foreach ?>
 
 
@@ -33,12 +39,14 @@
 	<div class="next" >
 
 
-		<a href="index.php">first </a>
+		<!-- <a href="index.php">first </a> -->
 		<?php for($i = 1 ; $i <= $displayData['pagination']; $i++){ ?>
 		<a href="index.php?offset=<?php echo $i ?>"><?php echo $i ?> </a>
 		<?php } ?>
+		<!--
 		<a href=""> next</a>
 		<a href=""> last</a>
+		-->
 
 	</div>
 </div>

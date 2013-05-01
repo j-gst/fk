@@ -20,7 +20,7 @@ CREATE  TABLE IF NOT EXISTS `FotoKommentare`.`FK_CategoryAndTag` (
   UNIQUE INDEX `Name_UNIQUE` (`Name` ASC) )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COMMENT = 'Enthaellt Angaben zu Kategorien oder Tags, die an einem Foto vergeben werden';
+COMMENT = 'Angaben zu Kategorien oder Tags';
 
 
 -- -----------------------------------------------------
@@ -67,7 +67,7 @@ CREATE  TABLE IF NOT EXISTS `FotoKommentare`.`FK_Picture` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COMMENT = 'Enthaellt Angaben zu hochgeladenen Bildern inklusiver Speicherort im FileSystem';
+COMMENT = 'Enthaellt Angaben zu hochgeladenen Bildern';
 
 
 -- -----------------------------------------------------

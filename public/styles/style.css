@@ -76,10 +76,12 @@ img{
 }
 
 .imagearea {
-	float: clear both;
+	width: 95%;
 	margin:10px;
-	min-height:400px;
-	border-bottom: 2px solid #595959;
+    float:left;
+	border-bottom: 1px solid #595959;
+	clear:both;
+
 }
 
 .image img{
@@ -102,7 +104,7 @@ img{
 	margin: 1px;
 	height: 200px;
     padding: 5px;
-	background-color: silver;
+	background-color: #DDD;;
 	overflow: hidden;
 	float: left;
 }
@@ -135,7 +137,7 @@ img{
 	margin-bottom: 10px;
 }
 .next a { 
-	background-color: silver;
+	background-color: #DDD;;
 	font-weight:bold; 
 	font-size:14px; 
 	color:blue; 
@@ -149,7 +151,14 @@ img{
 
 
 
-
+.commentarea{
+    background-color: yellow;
+	width: 100%;
+	height:400px;
+	float:left;
+	clear:both;
+	display:none;
+}
 
 
 
@@ -172,7 +181,7 @@ img{
 
 #footer{
 clear:both;
-	background-color: silver;
+	background-color: #DDD;
 	height: 60px;
 	margin-top: 25px;
 }
