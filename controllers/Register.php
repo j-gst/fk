@@ -47,6 +47,7 @@ class Register extends Controller
 		}
 	}//saveUserToDB
 	
+	// weiter kam ich bisher nicht
 }	
 ?>
 	
