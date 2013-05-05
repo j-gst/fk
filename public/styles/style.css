@@ -211,7 +211,7 @@ img{
 /* Register */
 
 .categories button{
-	margin: 18px;
+	display: block;
 	}
 
 
