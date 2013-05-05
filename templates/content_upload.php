@@ -18,20 +18,7 @@
 								<p>Datei ausw&auml;hlen: <input type="file" name="Durchsuchen" value="Durchsuchen" /></p>
 								<p>Bildtitel:<input class="normal" type="text" name="Bildtitel" /></p>
 								<p>Bildbeschreibung:</p>
-<<<<<<< HEAD
-<textarea name="Bildbeschreibung" rows="10" cols="60">Hier k&ouml;nne Sie Beschreibungen zu Ihrem Bild eingeben. 
-Z.B. wo und wann die Aufnahme entstand, 
-welche Kameraeinstellungen Sie verwendet haben und alles was Sie dazu zu sagen haben.
-</textarea>
-						</div>
-					<div class="checkbox-categories">
-						<p>Kategorie/n:</p>
-							<lablel><input type="checkbox" name="Kategorien" value="Landschaft">Landschaft</lablel>
-							<label><input type="checkbox" name="Kategorien" value="Portraits">Portrais</label>
-							<label><input type="checkbox" name="Kategorien" value="Kinder">Kinder</label>
-							<label><input type="checkbox" name="Kategorien" value="Familie">Familie</label>
-							<p></p>
-=======
+
 									<textarea name="Bildbeschreibung" rows="10" cols="60">Hier k&ouml;nne Sie Beschreibungen zu Ihrem Bild eingeben. 
 									Z.B. wo und wann die Aufnahme entstand, 
 									welche Kameraeinstellungen Sie verwendet haben und alles was Sie dazu zu sagen haben.
@@ -43,11 +30,10 @@ welche Kameraeinstellungen Sie verwendet haben und alles was Sie dazu zu sagen h
 									<label><input type="checkbox" name="Kategorien" value="Kinder">Kinder</label>
 									<label><input type="checkbox" name="Kategorien" value="Familie">Familie</label>
 							</div>
->>>>>>> Sinnloseste Änderung Ever
 							<input type="submit" value="hochladen">
 					</div>	
 					<div class="info">
-						<img src="../public/styles/img/icon_question.gif" id="" onclick=""/>
+						<img src="../public/styles/img/icon_question.gif" id="helpWindow" onclick="openHelpWindow(uploadHelp.php);"/>
 					</div>
 					</fieldset>
 				</form>
