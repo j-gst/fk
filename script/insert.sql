@@ -1,4 +1,7 @@
 
-INSERT INTO FK_User (`UserName`, `EMailAdress`,`NamePart1`,`NamePart2`,`UserState`)
-VALUES ('testuser1', 'test@test.de', 'test', 'user', 0)
+INSERT INTO FotoKommentare.FK_User (`UserName`, `EMailAdress`,`FirstName`,`LastName`,`UserState`,`Role`, `Password`)
+VALUES ('admin', 'admin@test.de', 'Admin', 'Admin', 1, 'admin', 'x')
 
+
+INSERT INTO FotoKommentare.FK_User (`UserName`, `EMailAdress`,`FirstName`,`LastName`,`UserState`,`Role`, `Password`)
+VALUES ('guest', 'gast@test.de', 'Gast', 'Gast', 1, 'guest', 'x')

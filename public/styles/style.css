@@ -104,13 +104,17 @@ img{
 	margin: 1px;
 	height: 200px;
     padding: 5px;
-	background-color: #DDD;;
+	background-color: #DDD;
 	overflow: hidden;
 	float: left;
 }
 
 
+.singlecomment{
+	margin:3px;
+	padding:5px;
 
+}
 
 
 
@@ -128,6 +132,7 @@ img{
 	font-size:10px; 
 	color:blue; 
 	text-decoration:none; 
+	cursor : pointer;
 }
 .comment a:hover { font-weight:bold; color:red; text-decoration:none; }
 .comment a:active { font-weight:bold; color:lime; text-decoration:none; }
@@ -152,16 +157,24 @@ img{
 
 
 .commentarea{
-    background-color: yellow;
+    background-color:   #F0F0FF;
 	width: 100%;
-	height:400px;
+	max-height:300px;
 	float:left;
 	clear:both;
 	display:none;
+	overflow:auto;
 }
 
+.commentinput{
+    background-color:   #F0F0FF;
+	width: 100%;
+	height:200px;
+	float:left;
+	clear:both;
+	display:none;
 
-
+}
 
 
 .login{

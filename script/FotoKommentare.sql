@@ -13,8 +13,8 @@ DROP TABLE IF EXISTS `FotoKommentare`.`FK_CategoryAndTag` ;
 
 CREATE  TABLE IF NOT EXISTS `FotoKommentare`.`FK_CategoryAndTag` (
   `Id` INT(11) NOT NULL  AUTO_INCREMENT,
-  `Name` VARCHAR(45) NOT NULL ,
-  `Comment` VARCHAR(255) NULL DEFAULT NULL ,
+  `Name` VARCHAR(45) ,
+  `Comment` TEXT  DEFAULT NULL ,
   PRIMARY KEY (`Id`) ,
   UNIQUE INDEX `Id_UNIQUE` (`Id` ASC) ,
   UNIQUE INDEX `Name_UNIQUE` (`Name` ASC) )
@@ -32,13 +32,15 @@ CREATE  TABLE IF NOT EXISTS `FotoKommentare`.`FK_User` (
   `Id` INT(11) NOT NULL  AUTO_INCREMENT,
   `UserName` VARCHAR(16) NOT NULL ,
   `EMailAdress` VARCHAR(64) NOT NULL ,
-  `NamePart1` VARCHAR(45) NOT NULL ,
-  `NamePart2` VARCHAR(45) NOT NULL ,
+  `FirstName` VARCHAR(45) NOT NULL ,
+  `LastName` VARCHAR(45) NOT NULL ,
+  `Password` BLOB NOT NULL , 
   `UserState` SMALLINT NOT NULL ,
+  `Role` ENUM('guest','user','admin') NOT NULL ,  
   PRIMARY KEY (`Id`) ,
   UNIQUE INDEX `Id_UNIQUE` (`Id` ASC) ,
   UNIQUE INDEX `UserName_UNIQUE` (`UserName` ASC) ,
-  UNIQUE INDEX `EMailAdress_UNIQUE` (`EMailAdress` ASC) )
+  UNIQUE INDEX `EMailAddress_UNIQUE` (`EMailAdress` ASC) )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COMMENT = 'Enthaellt Angaben zum registrierten Benutzer';
@@ -143,3 +145,18 @@ COMMENT = 'Verlinkungstabelle zwischen Foto und Kategorie/Tag';
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+
+-- -----------------------------------------------------
+-- Initial inserts
+-- -----------------------------------------------------
+INSERT INTO FK_User
+(`UserName`, `EMailAdress`,`FirstName`,`LastName`,`UserState`,`Role`, `Password`)
+VALUES ('admin', 'admin@test.de', 'Admin', 'Admin', 1, 'admin', 'x');
+
+
+INSERT INTO `FotoKommentare`.`FK_User` 
+(`UserName`, `EMailAdress`,`FirstName`,`LastName`,`UserState`,`Role`, `Password`)
+VALUES ('guest', 'gast@test.de', 'Gast', 'Gast', 1, 'guest', 'x');
+

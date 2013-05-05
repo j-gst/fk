@@ -1,5 +1,5 @@
 <?php
-namespace controllers;// ??
+namespace controllers;
 
 /*
  * Klasse Upload, erbt von der Klasse Controller
@@ -54,7 +54,7 @@ class Upload extends Controller
 	//var_dump($_REQUEST);
 	
 	/**
-	 * ?? Doppelpfeile?? Beizeichnungen in einfachen Anführungszeichen??
+	 * 
 	 *
 	 * Die eingegebenen Daten werden ausgelesen
 	 * 
@@ -70,8 +70,9 @@ class Upload extends Controller
 			'PictureState' => '1',
 		
 		);
+	
 		$insertId = $this->db->insert('FK_Picture',$insertArgs,'ssdsssd' ); // ??
-		if($insertId){
+		if($insertId !== false){
 			$filename = "image".$insertId.".jpg" ; // der Bildname wird erzeugt
 			echo "vor1"; // Testzeile
 			$move = move_uploaded_file($_FILES['Durchsuchen']['tmp_name'],"../images/".$filename);
@@ -81,12 +82,9 @@ class Upload extends Controller
 		}else{
 		
 		}
-		
-
 		return true;
-		
-		
-
+  } else {
+   var_dump($_FILES);
   }
   
   

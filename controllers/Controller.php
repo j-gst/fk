@@ -28,7 +28,7 @@ abstract class Controller //Abstrakte Klasse Controller, von der die einzelnen C
  */
   static function getInstance($target = null)
   {
-		
+		$errorMsg = "";
 		$conf = new \classes\Config(); // ?? Variable conf wird belegt. new/classes/Config ist ein Pfas, aber Config() eine Methode?? ruft es die Klasse auf??
 		
         $db = new \classes\MysqlDB($conf->DB_host, $conf->DB_user, // ?? da ich die Variable conf schon nicht ganz verstehe, hier auch nur Bahnhof ??
@@ -36,7 +36,7 @@ abstract class Controller //Abstrakte Klasse Controller, von der die einzelnen C
  	  
 	    // gibt es einen Datenbankfehler?
 		$dbErrors = $db->getErrorList();
-		if ($dbErrors[0]["no"] > 0) {
+		if (isset($dbErrors[0]["no"]) && $dbErrors[0]["no"] > 0) {
 			// Fehlerseite
 			$target = "error";
 			// Fehlermeldung

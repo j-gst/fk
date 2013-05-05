@@ -15,7 +15,7 @@
 					
 					<p>
 						<label for="username">Benutzername</label>
-						<input id="username" type="text" name"username" />
+						<input id="username" type="text" name="username" />
 					</p>
 					
 					<p>
@@ -30,7 +30,7 @@
 					
 					<p>
 						<label for="email">E-Mail</label>
-						<input id="email" type="email" name"email">
+						<input id="email" type="email" name="email">
 					</p>
 					
 					<p>

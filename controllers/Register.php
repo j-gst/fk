@@ -10,6 +10,7 @@ class Register extends Controller
 	 * die Funktion run wird implementiert
 	 */
 	public function run(){
+	var_dump($_REQUEST);
 	if(isset($_REQUEST['action'])){
 		switch ($_REQUEST['action']) {
 			case 'save':
@@ -38,12 +39,16 @@ class Register extends Controller
 	private function saveUserToDB(){
 		if(isset($_REQUEST)){
 			$insertArr = array( 
-			'NamePart1' => $_REQUEST['lastname'],
-			'NamePart2' => $_REQUEST['firstname'],
+			'FirstName' => $_REQUEST['lastname'],
+			'LastName' => $_REQUEST['firstname'],
 			'UserName' => $_REQUEST['username'],
-			'UserState' => '1',
+			'EMailAddress' => $_REQUEST['email'],
+			'Password' => $password,
+			'Role' => 'user',			
+			'UserState' => 0,
 			 );
-			 $insertID = $this->db->insert('FK_User', $insertArr, '???');
+			 $insertID = $this->db->insert('FK_User', $insertArr, 'sssssd');
+			 var_dump($insertID);
 		}
 	}//saveUserToDB
 	

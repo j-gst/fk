@@ -5,11 +5,17 @@
 class imageArea
 {
     public $titel;
+	public $id;
 	public $date;
 	public $user;
 	public $desc;
 	public $thumbnail;
 	public $imgLink;
+	
+	public $commentsCount = 0;
+	
+	// alle Kommentare und Kommentarinformationnen zu dem Bild
+	public $comments = array();
 	
 
 }
