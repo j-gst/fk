@@ -192,6 +192,30 @@ img{
 	margin-left: 350px;
 }
 
+/* Inhalt */
+
+.left{
+	float: left;
+}
+
+.clear{
+	clear: both;
+}
+
+.info{
+	width: 15px;
+	height: 15px;
+	float: right;
+}
+
+/* Register */
+
+.categories button{
+	margin: 18px;
+	}
+
+
+
 #footer{
 clear:both;
 	background-color: #DDD;
@@ -383,11 +407,11 @@ clear:both;
 	float: right;
 }
 
-.checkbox-categories label{
+/*.checkbox-categories label{
 	display: block;
 	line-height: 20px;
 }
-
+*/
 .checkbox-categories button{
 	margin: 18px;
 	}
