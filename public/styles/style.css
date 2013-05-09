@@ -16,6 +16,8 @@ img{
 
 
 
+
+
 .site{
 	width:1080px;
 	/* background-image: url(img/header.jpg);
@@ -232,7 +234,17 @@ img{
 
 
 
+.info{
+  width: 15px;
+  height: 15px;
+  float: right;
+} 
 
+
+	
+.categories{
+		display: block;
+}
 
 
 /* **************************************************************************** */

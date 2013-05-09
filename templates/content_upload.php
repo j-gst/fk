@@ -32,6 +32,9 @@ welche Kameraeinstellungen Sie verwendet haben und alles was Sie dazu zu sagen h
 							<p></p>
 							<input type="submit" value="hochladen">
 					</div>	
+					<div class="info">
+						<img src="../public/styles/img/icon_question.gif" id="helpWindow" onclick="openHelpWindow(uploadHelp.php);"/>
+					</div>
 					</fieldset>
 				</form>
 		</div>		
