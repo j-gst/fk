@@ -75,7 +75,7 @@ class Upload extends Controller
 		if($insertId !== false){
 			$filename = "image".$insertId.".jpg" ; // der Bildname wird erzeugt
 			echo "vor1"; // Testzeile
-			$move = move_uploaded_file($_FILES['Durchsuchen']['tmp_name'],"../images/".$filename);
+			$move = move_uploaded_file($_FILES['Durchsuchen']['tmp_name'],$this->conf->imgDir.$filename);
 			echo "vor"; // testzeile
 			$this->makeThumbnail($filename); // die Funktion makeThumbnail wird aufgerufen
 			//var_dump($move);
@@ -99,14 +99,14 @@ class Upload extends Controller
    */
   private function makeThumbnail($filename){
   	echo "makeThumbnail";
-  	$image = imagecreatefromjpeg("../images/".$filename); //von dem Bild wird ein Bild gemacht
+  	$image = imagecreatefromjpeg($this->conf->imgDir.$filename); //von dem Bild wird ein Bild gemacht
 	$w = imagesx($image); //Breite und Höhe des Bildes werden abgefragt
 	$h = imagesy($image);
 	$new_w = 250; // eine neue Breite wird festgelegt
 	$new_h = floor( $h * ($new_w / $w) ); // anhand der bekannten Maße und der festgelegten neuen Breite wird die neue Höhe berechnet
 	$tmpImg = imagecreatetruecolor($new_w, $new_h); // es wird ein neues Bild mit neuer Höhe und Breite erstellt, dass noch leer ist
 	var_dump($tmpImg); 
-	$dst_image = "../images/tn_".$filename;
+	$dst_image = $this->conf->imgDir."tn_".$filename;
 	var_dump($dst_image); //??
 	$r = imagecopyresized($tmpImg, $image, 0, 0, 0, 0, $new_w, $new_h, $w, $h); // das Bild wird mit der neuen Größe erstellt
 	var_dump($r);

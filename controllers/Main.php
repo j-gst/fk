@@ -11,7 +11,7 @@ class Main extends Controller
 
    /*
     * die Methode run() wird implementiert
-    * das erzeugte Objekt lädt ein array mit Bildern durch die Methode getImagesFromDB()
+    * das erzeugte Objekt lädt ein array mit Bildern durch die Methode getsFromDB()
     * das erzeugte Ojekt lädt ein array mit Seitenzahlen über die Funktion getPagination()
     * die Methode display wird mit dem Parameter main auf dem Objekt aufgerufen
    */
@@ -60,8 +60,8 @@ class Main extends Controller
 		$displayImages[$key]->date = $date->format('d.m.Y H:i:s');
 		$displayImages[$key]->user = $img['UserName'];
 		$displayImages[$key]->desc = nl2br($img['Description']);
-		$displayImages[$key]->thumbnail = "../images/tn_image".$img['Id'].".jpg";
-		$displayImages[$key]->imgLink = "../images/image".$img['Id'].".jpg";
+		$displayImages[$key]->thumbnail = $this->conf->imgDir."tn_image".$img['Id'].".jpg";
+		$displayImages[$key]->imgLink = $this->conf->imgDir."image".$img['Id'].".jpg";
 		
 
 		

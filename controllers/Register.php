@@ -10,7 +10,7 @@ class Register extends Controller
 	 * die Funktion run wird implementiert
 	 */
 	public function run(){
-	var_dump($_REQUEST);
+	//var_dump($_REQUEST);
 	if(isset($_REQUEST['action'])){
 		switch ($_REQUEST['action']) {
 			case 'save':

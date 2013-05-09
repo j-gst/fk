@@ -3,9 +3,8 @@
 	<head>
 		<title> Startseite </title> <!-- hier muss noch eine Variale eingearbeitet werden, damit immer der Titel der aktuellen Seite angezeigt wird ToDo: Beate -->
 		<link href="styles/style.css" type="text/css" rel="stylesheet">
-		<script type="text/javascript" src="main.js"></script>
-	</head>
-	
+		<script type="text/javascript" src="js/main.js"></script>
+	</head>	
 	<body>
 		<!-- der div class=site umschließt den gestalteten Inhalt, um diesen im Browser ausrichten zu können -->
 		<div class="site">
@@ -35,9 +34,9 @@
 			<div class="login">		
 				
 					<form action="index.php?page=login">
-						<p><label>Benutzername</label></p>
-						<input type="text" name="username">
-						<p><label>Passwort</label></p>
+						<label>Benutzername</label><br>
+						<input type="text" name="username"><br>
+						<label>Passwort</label><br>
 						<input type="password" name="pass" value="">
 						<br /><br /><input type="submit" name="anmelden" value="Anmelden">
 						<a href="index.php?page=register">Registrieren</a>

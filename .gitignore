@@ -10,4 +10,4 @@ images/*.jpg
 images/*.jpeg
 images/*.png
 images/*.bmp
-
+public/images/*.jpg

@@ -4,7 +4,7 @@
 
 		<div class="formular">
 			<form enctype="multipart/form-data" action="?page=upload&action=save" method="post">
-				<fieldset>
+				<fieldset class="form_field">
 					<legend>Bild-Upload</legend>
 						<div class="left">
 							<input type="hidden" name="max_file_size" value="9000000000">

@@ -1,5 +1,5 @@
 	<div class="formular">
-		<fieldset>	
+		<fieldset class="form_field">	
 			<legend>Registrierung</legend>
 				<form class="register" enctype="multipart/form-data" action="?page=register&action=save" method="post">
 					

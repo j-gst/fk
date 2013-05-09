@@ -2,16 +2,29 @@
 /*festlegung der schriftart  */
 body{
 	font-family: helvetica;
-	margin-top: 0;
-	padding-top: 0;
+	margin: 0px;
+	padding: 0px;
+	background-color: black;
+    height:100%;
+	border-width:0px;
 }
 img{
 	vertical-align: middle;
 }
 
+
+
+
+
 .site{
 	width:1080px;
+	/* background-image: url(img/header.jpg);
+	background-color: #efefef; */
 	margin: auto;
+	margin-top: 0px;	
+	padding-top: 0px;	
+	
+	background-color: #efefef;
 }
 
 
@@ -54,19 +67,23 @@ img{
 	/*background-color: #DDD;*/
 }
 .menue a:hover { font-weight:bold; color:red; text-decoration:none; }
-.menue a:active { font-weight:bold; color:lime; text-decoration:none; }
 
 .content{
-	margin-bottom: 25px;
+		margin-top: 0px;
+}
+
+.form_field{
+	background-color:   #F0F0FF;
+	width: 68%;
+	min-height:600px;
 }
 
 .formular{
 	
 }
 
-
 .images {
-
+	
 	float: left;
 	width: 70%;
 	margin: 0px;
@@ -142,7 +159,7 @@ img{
 	margin-bottom: 10px;
 }
 .next a { 
-	background-color: #DDD;;
+	background-color: #DDD;
 	font-weight:bold; 
 	font-size:14px; 
 	color:blue; 
@@ -179,10 +196,11 @@ img{
 
 .login{
 	float: right;
+	margin-right:20px;
 	width: 25%;
-	margin-top: 9px;
-	border: solid 0.5px;
+	margin-top: 0px;
 	padding: 5px;
+	background-color:   #F0F0FF;
 	
 	
 }
@@ -192,6 +210,7 @@ img{
 	margin-left: 350px;
 }
 
+<<<<<<< HEAD
 /* Inhalt */
 
 .left{
@@ -218,12 +237,25 @@ img{
 
 #footer{
 clear:both;
+=======
+.footer{
+    clear:both;
+>>>>>>> aufgeraumt / anpassungen linux
 	background-color: #DDD;
-	height: 60px;
-	margin-top: 25px;
+	height: 30px;
+	margin-top: 10px;
+	padding-top:15px;
+	text-align:center;
+	
 }
 
-
+.footer a{
+	margin:5px;
+	font-weight:bold; 
+	font-size:10px; 
+	color:blue; 
+	text-decoration:none; 
+}
 
 
 
@@ -239,14 +271,26 @@ clear:both;
 #header{
 	background-image: url(img/header.jpg);
 	height: 150px;
-	width: 1080px;
+	width: 100%;
 	/*background-size: 100%;
 	background-position-y: -150px;*/
 	font-family: Noteworthy;
 	font-size: 30px;
 	color: white;
-	padding-left: 0px;
+	padding: 0px;
+	margin:0px;
 }
+
+#header h1{
+	font-size: 60px;
+	text-align:center;
+	color: white;
+	padding: 0px;
+	padding-top: 25px;
+	margin:0px;
+}
+
+
 
 /*menueleiste*/
 #navi{

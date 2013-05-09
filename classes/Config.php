@@ -18,7 +18,7 @@ public $DB_showErrors  =  false;
 public $showImgNum = 5; //legt die Anzahl der pro Seite gezeigten Bilder fest
 
 public $debug = false;
-	
+public $imgDir = "images/";	
 	
 	
 	
