@@ -4,7 +4,7 @@ body{
 	font-family: helvetica;
 	margin: 0px;
 	padding: 0px;
-	background-color: black;
+	/*background-color: black;*/
     height:100%;
 	border-width:0px;
 }
@@ -244,6 +244,14 @@ img{
 	
 .categories{
 		display: block;
+}
+
+
+/* **********************************Help-Windows**************************************** */
+
+#all_help{
+	background-color: #ffffff;
+	
 }
 
 
