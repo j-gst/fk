@@ -1,11 +1,12 @@
 <?php namespace classes;
 /*
- * Hier sind Konfigurationsdaten gepeichert
+ * Das User Objekt speichert alle relevanten Daten zum User
+ * @Author: Gerrit Storm
  */
 class User{
 
 /*
- * datenbankspezifische Daten
+ userspezifische Daten
  */
 private $username = '';
 private $firstname = '';
@@ -17,6 +18,11 @@ private $isLoggedIn = false;
 private $rights = array();
 
 	
+	/*
+	* Prueft ob in der Session alle Userdaten vorhanden sind
+	* wenn ja, werden diese uebernommen
+	* sonst ist der User ein Gast 
+	*/
 	public function __construct(){
 	
 	if(isset($_SESSION['username']) 
@@ -36,29 +42,45 @@ private $rights = array();
 		$this->isLoggedIn = $_SESSION['isLoggedIn']?$_SESSION['isLoggedIn']:false;	
 	} else {
 		$this->username = 'gast';
+		
+		// wichtig fuer die DB
 		$this->id = NULL;
+		
 		$this->role = 'guest';
 	}
 	
+	
+
 	$this->getRights();
 	
 	}// __construct()
 	
 	
-	// magic get methode:
-	// gibt z.B. mit $user->get('username') den Wert des private Atributes $user->username
-	public function getUsername() {
-		return $this->username;
-    }
-	public function getId() {
-		return $this->id;
-    }
-	public function isLoggedIn() {
-		return $this->isLoggedIn;
-    }
+	
+    /*
+	* der $rights Array wird befuellt mit allen Rechten des Users
+	*/
 	private  function getRights(){
 		
 	}
+	
+
+	/*
+	* getter Methoden
+	*/
+	public function getUsername() {
+		return $this->username;
+    }
+	
+	public function getId() {
+		return $this->id;
+    }
+	
+	public function isLoggedIn() {
+		return $this->isLoggedIn;
+    }
+	
+
 
 
 

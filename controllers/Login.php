@@ -1,15 +1,17 @@
 <?php
 namespace controllers;
+
 /*
- * Klasse Error, erbt von der Klasse Controller
+ * Login Controller
+ * zustaendig fuer login und logout
+ * @Author: Gerrit Storm
  */
 class Login extends Controller
 {
   
-
-   /*
-    * die Funktion run wird implementiert
-    */
+  /*
+      * Login / logout wird durgefuert und auf die Hauptseite umgeleitet
+     */
    public function run(){
 	if( isset($_REQUEST['action']) && $_REQUEST['action'] === 'login' ){
 		if($this->login()){
@@ -23,15 +25,24 @@ class Login extends Controller
 	header( 'Location: index.php' ) ;
   
   } // run()
-  
+ 
+
+  /*
+    * Laed User Daten aus der DB
+    * Prueft Username/Passwort 
+    * Schreibt Userdaten in die Session
+    * @return: boolean
+    */  
   public function login(){  
 		if( isset($_REQUEST['username']) && isset($_REQUEST['password'])){
 		   $q = sprintf('SELECT Id, UserName, EMailAdress, FirstName, LastName, Password, UserState, Role 
 		                 FROM FK_User WHERE UserName = "%s" LIMIT 1', $_REQUEST['username']);
 
-	       // alle Bildinformationen aus der DB laden
+	       // User aus der DB laden
 			$user = $this->db->query_array($q); 
+			// User gefunden ? 
 			if($user && count($user) > 0){ 	
+			    // PW korrekt ? 
 				if($this->checkPassword($user[0]['Password'] , $_REQUEST['password'])){
 					$_SESSION['username'] = $user[0]['UserName'] ;
 					$_SESSION['id'] = $user[0]['Id'] ;
@@ -40,23 +51,29 @@ class Login extends Controller
 					$_SESSION['firstname'] = $user[0]['FirstName'] ;
 					$_SESSION['lastname'] = $user[0]['LastName'] ;	
 			    	$_SESSION['isLoggedIn'] = true;
-				return true;
-					
+					// erfolgreich
+					return true;	
 				}
-			}
-			
+			}			
 		}
-  
+    // nicht erfolgreich
     return false;
   } // login()
   
+  
+  /*
+    * Session wird geloescht
+    */   
   public function logout(){
 		unset($_SESSION);
 		session_destroy();
   } 
   
+ /*
+   * Test ob das Passwort korrekt ist
+   * @return: boolean
+  */
   public function checkPassword($hash , $pass){
-
 		return sha1($pass) === $hash;
   } 
   
