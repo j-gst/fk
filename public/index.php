@@ -5,7 +5,8 @@ require_once "../classloader.php"; //einmalig einladen der classloader.php
 
 $test = array('indexNr1' => "test", 66, 'hallo' => true, "xy");
 
-
+// Start der Session
+session_start();
 
 // Error Reporting abschalten
 error_reporting(0);

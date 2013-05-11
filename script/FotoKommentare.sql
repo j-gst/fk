@@ -53,7 +53,7 @@ DROP TABLE IF EXISTS `FotoKommentare`.`FK_Picture` ;
 
 CREATE  TABLE IF NOT EXISTS `FotoKommentare`.`FK_Picture` (
   `Id` INT(11) NOT NULL AUTO_INCREMENT,
-  `UserId` INT(11) NOT NULL ,
+  `UserId` INT(11),
   `Name` VARCHAR(255) NOT NULL , 
   `Format` VARCHAR(32) NOT NULL ,
   `CreaDateTime` DATETIME NOT NULL ,
@@ -80,7 +80,7 @@ DROP TABLE IF EXISTS `FotoKommentare`.`FK_Comments` ;
 CREATE  TABLE IF NOT EXISTS `FotoKommentare`.`FK_Comments` (
   `Id` INT(11) NOT NULL  AUTO_INCREMENT,
   `PictureId` INT(11) NOT NULL ,
-  `UserId` INT(11) NOT NULL ,
+  `UserId` INT(11),
   `Comment` TEXT NOT NULL ,
   `RelatedId` INT(11) NULL DEFAULT NULL ,
   `CommentState` SMALLINT(6) NOT NULL ,

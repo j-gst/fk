@@ -63,7 +63,7 @@ class Upload extends Controller
 		$insertArgs = array(
 			'LocationFS' => $_FILES['Durchsuchen']['name'],
 			'Name' => $_REQUEST['Bildtitel'],
-			'UserId' => '1',
+			'UserId' => $this->user->getId(),
 			'Format' => $_FILES['Durchsuchen']['type'],
 			'CreaDateTime' => date("Y-m-d H:i:s"),
 			'Description' => $_REQUEST['Bildbeschreibung'],

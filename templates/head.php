@@ -33,14 +33,20 @@
 			<!-- Das Login-Feld -->
 			<div class="login">		
 				
-					<form action="index.php?page=login">
+				<?php if ( $user->isLoggedIn() ){ ?>
+				
+				    <p> Sie sind angemeldet als <?php echo $user->getUsername() ?> </p>
+					<a href="index.php?page=login&action=logout">Abmelden</a>
+				
+				<?php } else{ ?>
+					<form action="index.php?page=login&action=login" method="post">
 						<label>Benutzername</label><br>
 						<input type="text" name="username"><br>
 						<label>Passwort</label><br>
-						<input type="password" name="pass" value="">
+						<input type="password" name="password" value="">
 						<br /><br /><input type="submit" name="anmelden" value="Anmelden">
 						<a href="index.php?page=register">Registrieren</a>
 					</form>
-			
+			     <?php } if (isset($_SESSION['loginMsg'])) echo $_SESSION['loginMsg'] ; unset($_SESSION['loginMsg']) ?>
 			</div> 
 			

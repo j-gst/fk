@@ -9,13 +9,15 @@ abstract class Controller //Abstrakte Klasse Controller, von der die einzelnen C
 	protected $displayData = array();
 	protected $db = null;
 	protected $conf = null;
+	protected $user = null;	
     protected  $errorMsg = "Fehler";
   
 /*
  * ?? Pfeile verwirren mich. Hier geht es um die DB, was passiert hier?
  */
- public function  __construct($db , $config, $errorMsg = "")
+ public function  __construct($user, $db , $config, $errorMsg = "")
   {
+	$this->user = $user;	
 	$this->db = $db;
     $this->conf = $config;
 	$this->errorMsg = $errorMsg;
@@ -43,6 +45,11 @@ abstract class Controller //Abstrakte Klasse Controller, von der die einzelnen C
 			$errorMsg = "Datenbankfehler!";
 		}
 		
+		$user = new \classes\User(); // User Objekt
+		
+		
+		
+		
 		$returnObj = null;
 		
 		
@@ -66,7 +73,10 @@ abstract class Controller //Abstrakte Klasse Controller, von der die einzelnen C
 				case ('register'):
 					$controller = '\controllers\Register';
 					break;
-				case ('error'):
+				case ('login'):
+					$controller = '\controllers\Login';
+					break;
+					case ('error'):
 					$controller = '\controllers\Error';
 					break;					
 				default:
@@ -81,12 +91,12 @@ abstract class Controller //Abstrakte Klasse Controller, von der die einzelnen C
 		
     if ( class_exists($controller , true) )
     {
-      $returnObj = new $controller($db, $conf,  $errorMsg);
+      $returnObj = new $controller($user, $db, $conf,  $errorMsg);
     } 
     else 
     { 
 	  $errorMsg = "Diese Seite existiert leider nicht!";
-      $returnObj = new \controllers\Error(null, null, $errorMsg);
+      $returnObj = new \controllers\Error($user, null, null, $errorMsg);
     }
 	return $returnObj;
  
@@ -104,6 +114,7 @@ abstract class Controller //Abstrakte Klasse Controller, von der die einzelnen C
    */
   protected function display($contentTpl){
     $displayData = $this->displayData;
+    $user = $this->user;	
 	include "../templates/main.php";
   
   }

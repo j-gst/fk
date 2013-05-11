@@ -17,7 +17,7 @@ class Main extends Controller
    */
    public function run(){
 
-   //var_dump($_REQUEST);
+ 
    
     if ( isset($_REQUEST['save_comment']) && isset($_REQUEST['id']) ){
 		$this->saveCommentToDB();	
@@ -58,7 +58,7 @@ class Main extends Controller
 		$displayImages[$key]->titel = $img['Name'];
 		$date = new \DateTime($img['CreaDateTime']);
 		$displayImages[$key]->date = $date->format('d.m.Y H:i:s');
-		$displayImages[$key]->user = $img['UserName'];
+		$displayImages[$key]->user = $img['UserName'] ? $img['UserName'] : 'Gast';
 		$displayImages[$key]->desc = nl2br($img['Description']);
 		$displayImages[$key]->thumbnail = $this->conf->imgDir."tn_image".$img['Id'].".jpg";
 		$displayImages[$key]->imgLink = $this->conf->imgDir."image".$img['Id'].".jpg";
@@ -75,7 +75,7 @@ class Main extends Controller
 		if($comments !== false){
 			$displayImages[$key]->commentsCount = count($comments);
 			foreach($comments as $cKey => $comment){
-				$displayImages[$key]->comments[$cKey]['UserName'] = $comment['UserName'];
+				$displayImages[$key]->comments[$cKey]['UserName'] = $comment['UserName'] ? $comment['UserName'] : 'Gast';;
 				$displayImages[$key]->comments[$cKey]['Comment'] = nl2br($comment['Comment']);
 				$cDate = new \DateTime($comment['CreaDateTime']);
 				$displayImages[$key]->comments[$cKey]['date'] = $cDate->format('d.m.Y H:i:s');
@@ -111,10 +111,11 @@ class Main extends Controller
   
   private function saveCommentToDB(){
   
+
   $insertArgs = array(
 			'PictureId' => $_REQUEST['id'],
 			'Comment' => $_REQUEST['comment_text'],
-			'UserId' => 1,
+			'UserId' => $this->user->getId(),
 			'CreaDateTime' => date("Y-m-d H:i:s"),
 			'CommentState' => 1,
 		);
