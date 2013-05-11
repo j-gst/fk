@@ -71,7 +71,14 @@ class Register extends Controller
 				  $dbO = $this->db->query_array($dbQ); 
 
 				  //Eintragen der aus der DB ausgelesenen Daten in dafür vorbereitete Arrays
-				while ($row=mysql_fetch_assoc($dbO)){
+				 
+				 
+###  mysql_fetch_assoc() brauchst du hier nicht -> $db0 kommt schon als array - jedes Element
+### ist wieder ein array mit zwei Elementen -> ['UserName'] und ['EMailAddress']
+				// while ($row=mysql_fetch_assoc($dbO)){
+				
+### daher hier foreach
+				if($dbO !== false) foreach($dbO as $row){
 					$userAlias[]=$row['UserName'];
 					$mailAddys[]=$row['EMailAddress'];
 				}//end while
@@ -79,7 +86,8 @@ class Register extends Controller
 				if(trim($_REQUEST['lastname'])==''){
 					$errors[]="Bitte geben Sie Ihren Nachnamen ein.";
 				}
-				if(trim($_REQUEST['vorname'])==''){
+###  firstname nicht vorname
+				if(trim($_REQUEST['firstname'])==''){
 					$errors[]="Bitte geben Sie Ihren Vornamen ein.";
 				}
 				if(trim($_REQUEST['username'])==''){
@@ -111,38 +119,76 @@ class Register extends Controller
 				if(trim($_REQUEST['email'])==''){
 					$errors[]="Bitte geben Sie eine E-Maiadresse ein.";
 				}elseif(!preg_match('§^[\w\.-]+@[\w\.-]+\.[\w]{2,4}$§', trim($_REQUEST['email']))){
-					$errors="Die eingegebene Email hat ein ungültiges Format.";
+### [] vergessen
+					$errors[]="Die eingegebene Email hat ein ungültiges Format.";
 				}elseif(in_array(trim($_REQUEST['email']), $mailAddys)){
 					$errors[]="Die von Ihnene angegebene E-Mailadresse wird bereits genutzt.";
 				}
 		}//end else
 			
-			
-			if(count($errors)){
+			if(count($errors) > 0){
 				echo "Leider konnte Ihr Account nicht erstellt werden. <br />
 					 Bitte lesen Sie die folgenden Anmerkungen und versuchen Sie es erenut.<br />";
-					foreach(§errors as $error)
+###  §errors statt $errors das ist ohne Syntaxhighlighting mal echt schwer zu sehen
+					foreach($errors as $error)
 						echo $error."<br />";
 			}else{
-				
+	
+
+###	 ok die Variavble $password gab es noch nicht. Die muessen wir erst machen:
+### erstmal ganz einfach per sha1()
+	$passwordHash = sha1($_REQUEST['password']);
 			$insertArr = array( 
 			'LastName' => $_REQUEST['lastname'],
 			'FirstName' => $_REQUEST['firstname'],
 			'UserName' => $_REQUEST['username'],
-			'EMailAddress' => $_REQUEST['email'],
-			'Password' => $password,
+			'EMailAdress' => $_REQUEST['email'],
+			'Password' => $passwordHash,
 			'Role' => 'user',			
 			'UserState' => 0,
 			 );
-			 $insertID = $this->db->insert('FK_User', $insertArr, 'sssssd');
-			 var_dump($insertID);
+
+	$insertID = $this->db->insert('FK_User', $insertArr, 'ssssssd');	
+### so bekommst du die MYSQL Fehlermeldungen zu sehen
+	if($insertID === false){
+		var_dump( $this->db->getErrorList() );
+	}
+
+### hier haben wir das Problem, das wir schon gesehen hatten das feld in der DB ist EMailAdress  mit einem d
+### sollten wir mit anpassen, wen wir die DB das naechste mal updaten
+ 		
 		}// else
 	
 	
 	// weiter kam ich bisher nicht
 	
+############################################
+/*
+         ich wuerde $errors als assoziatives  array machen etwa so:
+		$errors['password']="Bitte geben Sie ein Passwort ein.";
+		$errors['confirmpw']="Bitte wiederholen Sie Ihr gewünschtes Passwort.";
+		
+		alle werte werden am Anfang mit leerstring initialisiert: $errors['password'] = '';
 	
-	}	
+	         dann wird $errors in $this->displayData gespeichert, damit man im template darauf zugreifen kann
+			z.B.  $this->displayData ['formerrors'] = $errors;  
+	         
+			 
+		$this->displayData ['formerrors']  wird dann im template immer ( daher wichtig erst mit leerstring initialisieren	)  mit angezeigt
+		etwa so:
+	       <input id="username" type="text" name="username" />  <p class="formerror"> <?php echo  $displayData ['formerrors'] ['username'] ; ?> </p>
+		  ist ein Fehler vorhanden, wird er neben dem richtigen Feld angezeigt
+		  dann noch ne css klasse für formerror - irgendwie rot zB
+	
+	
+	und dann umleiten auf Hauptseite??? , 
+	
+	
+	
+*/	
+#############################################
+	
+	} //	if(isset($_REQUEST))
 
 	}//saveUserToDB
 
