@@ -55,11 +55,11 @@ class Main extends Controller
 	  foreach($images as $key => $img){ 
 		$displayImages[$key] = new \classes\imageArea();
 		$displayImages[$key]->id = $img['Id'];
-		$displayImages[$key]->titel = $img['Name'];
+		$displayImages[$key]->titel = htmlentities($img['Name']);
 		$date = new \DateTime($img['CreaDateTime']);
 		$displayImages[$key]->date = $date->format('d.m.Y H:i:s');
 		$displayImages[$key]->user = $img['UserName'] ? $img['UserName'] : 'Gast';
-		$displayImages[$key]->desc = nl2br($img['Description']);
+		$displayImages[$key]->desc = nl2br(htmlentities($img['Description']));
 		$displayImages[$key]->thumbnail = $this->conf->imgDir."tn_image".$img['Id'].".jpg";
 		$displayImages[$key]->imgLink = $this->conf->imgDir."image".$img['Id'].".jpg";
 		
@@ -114,7 +114,7 @@ class Main extends Controller
 
   $insertArgs = array(
 			'PictureId' => $_REQUEST['id'],
-			'Comment' => $_REQUEST['comment_text'],
+			'Comment' => htmlentities($_REQUEST['comment_text']),
 			'UserId' => $this->user->getId(),
 			'CreaDateTime' => date("Y-m-d H:i:s"),
 			'CommentState' => 1,
