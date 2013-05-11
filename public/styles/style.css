@@ -79,6 +79,13 @@ img{
 	width: 68%;
 	min-height:600px;
 }
+.form_error {
+	font-size: 14px;
+	font-weight:bold;
+	color:red;
+}
+
+
 
 .formular{
 	
@@ -441,6 +448,8 @@ img{
 	padding: 5px;
 	float: right;
 }
+
+
 
 .checkbox-categories label{
 	display: block;

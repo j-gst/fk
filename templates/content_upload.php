@@ -16,6 +16,7 @@
 							
 							
 								<p>Datei ausw&auml;hlen: <input type="file" name="Durchsuchen" value="Durchsuchen" /></p>
+								  <p class="form_error"> <?php  echo $displayData['uploaderror']  ?> </p>
 								<p>Bildtitel:<input class="normal" type="text" name="Bildtitel" /></p>
 								<p>Bildbeschreibung:</p>
 <textarea name="Bildbeschreibung" rows="10" cols="60">Hier k&ouml;nne Sie Beschreibungen zu Ihrem Bild eingeben. 

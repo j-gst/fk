@@ -47,6 +47,6 @@
 						<br /><br /><input type="submit" name="anmelden" value="Anmelden">
 						<a href="index.php?page=register">Registrieren</a>
 					</form>
-			     <?php } if (isset($_SESSION['loginMsg'])) echo $_SESSION['loginMsg'] ; unset($_SESSION['loginMsg']) ?>
+			    <p class="form_error"> <?php } if (isset($_SESSION['loginMsg'])) echo $_SESSION['loginMsg'] ; unset($_SESSION['loginMsg']) ?> </p>
 			</div> 
 			
