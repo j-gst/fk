@@ -50,6 +50,11 @@ class Upload extends Controller
    */
   private function saveImageToDB(){
   
+    // gueltige Dateiformate fuer den Upload
+    $validFiles = array(
+	   'image/jpeg',
+	);
+  
 	//var_dump($_FILES);
 	//var_dump($_REQUEST);
 	
@@ -68,8 +73,11 @@ class Upload extends Controller
 			'CreaDateTime' => date("Y-m-d H:i:s"),
 			'Description' => $_REQUEST['Bildbeschreibung'],
 			'PictureState' => '1',
-		
 		);
+	
+		if( !in_array($_FILES['Durchsuchen']['type'], $validFiles)){
+			return false;
+		}
 	
 		$insertId = $this->db->insert('FK_Picture',$insertArgs,'ssdsssd' ); // ??
 		if($insertId !== false){
