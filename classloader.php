@@ -10,21 +10,24 @@
 spl_autoload_register(function($class)
 {
 
-  
+
         $ds = DIRECTORY_SEPARATOR;
         $dir = __DIR__;
 
     // 
-        $file = "{$dir}{$ds}{$class}.php";
+        $file = "{$class}.php";
 
     // 
-        if (is_readable($file))
+//echo $file;
+        if (is_readable($file)){
             require_once $file;
-
+        }else{
+                   $file = preg_replace( "/\\\/","/",$file);
+            require_once "/".$file;
+        }
 
 });
 ?>
-
 
 
 

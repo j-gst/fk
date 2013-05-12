@@ -3,7 +3,8 @@
 // autoloader fuer Klassen
 require_once "../classloader.php"; //einmalig einladen der classloader.php
 
-$test = array('indexNr1' => "test", 66, 'hallo' => true, "xy");
+// wird fuer DateTime benoetigt
+date_default_timezone_set('Europe/Berlin');
 
 // Start der Session
 session_start();
