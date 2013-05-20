@@ -43,7 +43,7 @@ class Login extends Controller
 			// User gefunden ? 
 			if($user && count($user) > 0){ 	
 			    // PW korrekt ? 
-				if($this->checkPassword($user[0]['Password'] , $_REQUEST['password'])){
+				if($this->checkPassword($user[0]['Password'] , $_REQUEST['password'])){echo "BBB";
 					$_SESSION['username'] = $user[0]['UserName'] ;
 					$_SESSION['id'] = $user[0]['Id'] ;
 					$_SESSION['role'] = $user[0]['Role'] ;
@@ -74,7 +74,7 @@ class Login extends Controller
    * @return: boolean
   */
   public function checkPassword($hash , $pass){
-		return sha1($pass) === $hash;
+		return (sha1($pass) === $hash);
   } 
   
   

@@ -8,8 +8,16 @@
 	<?php foreach ($displayData['images'] as $key => $img){?>
 	
 	<div class="imagearea">
-	    <a name="<?php echo $img->id ?>">
-	    <h2><?php echo $img->titel ?></h2>
+	    <a  name="<?php echo $img->id ?>">
+	    <h2 style="display: inline;"><?php echo $img->titel ?></h2>
+		</a>
+		
+		<?php if($img->archive){ ?>
+		<a  href="index.php?page=gallery&id=<?php echo $img->archive ?>">
+		(komplettes Archiv)
+		</a>
+		<?php } ?>
+		<br>
 		<div class="image">
 		<a href="<?php echo $img->imgLink ?>">
 		<img src="<?php echo $img->thumbnail ?>">
@@ -18,6 +26,9 @@
 		<div class="imagetext">
 		Hochgeladen am: <?php echo $img->date ?><br>
 		User: <?php echo $img->user ?><br><br>
+		
+
+		
 		<?php echo $img->desc ?>
 		</div>
 		<div class="comment">

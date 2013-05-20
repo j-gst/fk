@@ -16,14 +16,15 @@ private $email = '';
 private $role = '';
 private $isLoggedIn = false;
 private $rights = array();
-
+private $db;
 	
 	/*
 	* Prueft ob in der Session alle Userdaten vorhanden sind
 	* wenn ja, werden diese uebernommen
 	* sonst ist der User ein Gast 
 	*/
-	public function __construct(){
+	public function __construct($db){
+	$this->db = $db;
 	
 	if(isset($_SESSION['username']) 
 			&& isset($_SESSION['id']) 
@@ -53,18 +54,40 @@ private $rights = array();
 
 	$this->getRights();
 	
-	}// __construct()
-	
-	
-	
-    /*
-	* der $rights Array wird befuellt mit allen Rechten des Users
-	*/
-	private  function getRights(){
-		
-	}
-	
+	}//__construct()
 
+	
+	
+	
+/**
+* der $rights Array wird befuellt mit allen Rechten des Users
+*/
+private  function getRights(){
+	$q = sprintf(
+		'SELECT FK_Right.Name    
+		FROM FK_Right 
+			JOIN FK_Right_Role ON FK_Right.Id = FK_Right_Role.RightId 
+			JOIN FK_Role ON FK_Role.Id = FK_Right_Role.RoleId 
+		WHERE FK_Role.Id = %d', 
+		$this->role);
+
+	
+$rights = $this->db->query_array($q);
+
+foreach($rights as $right){
+	$this->rights[] = $right['Name'];
+}
+
+}// getRights()
+	
+public function checkRight($right){
+   return in_array($right,$this->rights);
+} 
+
+
+
+
+	
 	/*
 	* getter Methoden
 	*/
@@ -84,5 +107,5 @@ private $rights = array();
 
 
 
-}
+}//class
 ?>

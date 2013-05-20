@@ -45,7 +45,7 @@ abstract class Controller //Abstrakte Klasse Controller, von der die einzelnen C
 			$errorMsg = "Datenbankfehler!";
 		}
 		
-		$user = new \classes\User(); // User Objekt
+		$user = new \classes\User($db); // User Objekt
 		
 		
 		
@@ -76,7 +76,10 @@ abstract class Controller //Abstrakte Klasse Controller, von der die einzelnen C
 				case ('login'):
 					$controller = '\controllers\Login';
 					break;
-					case ('error'):
+				case ('gallery'):
+					$controller = '\controllers\Gallery';
+					break;
+				case ('error'):
 					$controller = '\controllers\Error';
 					break;					
 				default:
@@ -122,13 +125,16 @@ abstract class Controller //Abstrakte Klasse Controller, von der die einzelnen C
 /*
  * Funktion erhält einen Parameter, über den eine Instanz eines Controllers erstellt und die Run Methode dieses Controllers aufgerufen werden kann
  */
- protected function redirect($target){
-	\controllers\Controller::getInstance($target)->run();
-	exit;
+ protected function redirectOnInsufficientRights(array $rights){
+	foreach ($rights as $right){
+		if( ! $this->user->checkRight($right) ){
+			$this->display("insufficient_rights"); 
+			exit;
+		}
+	}
  } 
-
-   
-  
+ 
+ 
   
 
 } ?>

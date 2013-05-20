@@ -16,10 +16,11 @@ class Main extends Controller
     * die Methode display wird mit dem Parameter main auf dem Objekt aufgerufen
    */
    public function run(){
-
+   $this->redirectOnInsufficientRights(array('view'));
  
    
     if ( isset($_REQUEST['save_comment']) && isset($_REQUEST['id']) ){
+		$this->redirectOnInsufficientRights(array('comment_make'));
 		$this->saveCommentToDB();	
 	}
    
@@ -45,7 +46,7 @@ class Main extends Controller
 	  }
 	  
 	  // query String
-	  $q = sprintf('SELECT FK_Picture.Id, Name, CreaDateTime, Description, UserName 
+	  $q = sprintf('SELECT FK_Picture.Id, Name, CreaDateTime, Description, UserName, ArchiveId 
 			FROM FK_Picture LEFT JOIN FK_User ON FK_User.Id = FK_Picture.UserId
 			ORDER BY CreaDateTime DESC LIMIT %d, %d', $offset, $this->conf->showImgNum);
 	  
@@ -56,6 +57,7 @@ class Main extends Controller
 		$displayImages[$key] = new \classes\imageArea();
 		$displayImages[$key]->id = $img['Id'];
 		$displayImages[$key]->titel = htmlentities($img['Name']);
+		$displayImages[$key]->archive = $img['ArchiveId'];
 		$date = new \DateTime($img['CreaDateTime']);
 		$displayImages[$key]->date = $date->format('d.m.Y H:i:s');
 		$displayImages[$key]->user = $img['UserName'] ? $img['UserName'] : 'Gast';
