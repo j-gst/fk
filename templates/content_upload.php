@@ -2,7 +2,7 @@
 
 
 
-		<div class="formular">
+		<div class="formular" >
 			<form enctype="multipart/form-data" action="?page=upload&action=save" method="post">
 				<fieldset class="form_field">
 					<legend>Bild-Upload</legend>
