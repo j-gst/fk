@@ -17,7 +17,7 @@ class Register extends Controller
 				$reg = $this->saveUserToDB();
 				/*if($reg === true){
 					//hier eine Weiterleitung, die dem Nutzer sagt, dass die Registrierung erfolgreich war
-					// wenn BestÃ¤tigung per mail implementiert wird, auch der Hinweis auf die Mail.
+					// wenn Bestaetigung per mail implementiert wird, auch der Hinweis auf die Mail.
 				}*/
 				
 				break;
@@ -39,11 +39,18 @@ class Register extends Controller
 	private function saveUserToDB(){
 		if(isset($_REQUEST)){
 			/*
-			 * Prüfen, ob alle Felder ausgefüllt wurden
-			 * hierfür ein Fehler-Array anlegen um gefundene Fehler speichern zu können
+			 * Pruefen, ob alle Felder ausgefuellt wurden
+			 * hierfuer ein Fehler-Array anlegen um gefundene Fehler speichern zu koennen
 			 * 
 			 */
-			$errors=array();
+			
+			
+			//Initialisierung des Errors-Arrays als assoziatives Array
+			$errors=array("lastname" => "", "firstname" => "", "username" => "", "usernameCharacters" => "", "usernameUsed" => "", "password" => "", 
+					"passwordConfirm" => "", "passwordConfirmFalse" => "", "email" => "", "emailFalse" => "", "emailUsed" => "");
+			//Speicherung des Fehler-Arrays zum Zugriff des aktuellen Objektes, so kann das Template es nutzen
+			$this->displayData ['formerrors'] = $errors;
+			
 			if(!isset($_REQUEST['lastname'],
 					$_REQUEST['firstname'],
 					$_REQUEST['username'],
@@ -51,18 +58,18 @@ class Register extends Controller
 					$_REQUEST['password'],
 					$_REQUEST['confirmpw']
 					)){
-				//$errors[]="Bitte füllen Sie alle Felder aus.";
+				//$errors['all']="Bitte f&uuml;llen Sie alle Felder aus.";
 			}else{
 				/*
-				 * Prüfung der Felder auf ihre Gültigkeit
-				 * Keine Garantie, dass alle möglichen Fälle der Fehlerhaften Eingabe geprüft werden
+				 * Pruefung der Felder auf ihre Gueltigkeit
+				 * Keine Garantie, dass alle moeglichen Faelle der Fehlerhaften Eingabe geprueft werden
 				 * vorerst implementiert, was mir einfiel und was meine Internetrecherche zu typischen Registrieren-Formularenhergab
 				 */
 				/*
-				 * Die nötigen Daten aus der Datenbank auslesen, 
-				 * die zu Vergleichen herangezogen werden müssen
-				 * in unserem Fall, Usernamen, die einmalig sein müssen
-				 * Mailadressen, die einmalig sein müssen
+				 * Die noetigen Daten aus der Datenbank auslesen, 
+				 * die zu Vergleichen herangezogen werden muessen
+				 * in unserem Fall, Usernamen, die einmalig sein muessen
+				 * Mailadressen, die einmalig sein muessen
 				 */
 				$userAlias=array();
 				$mailAddys=array();
@@ -70,66 +77,58 @@ class Register extends Controller
 				// alle Bildinformationen aus der DB laden
 				  $dbO = $this->db->query_array($dbQ); 
 
-				  //Eintragen der aus der DB ausgelesenen Daten in dafür vorbereitete Arrays
+				  //Eintragen der aus der DB ausgelesenen Daten in dafuer vorbereitete Arrays
 				 
-				 
-###  mysql_fetch_assoc() brauchst du hier nicht -> $db0 kommt schon als array - jedes Element
-### ist wieder ein array mit zwei Elementen -> ['UserName'] und ['EMailAddress']
-				// while ($row=mysql_fetch_assoc($dbO)){
-				
-### daher hier foreach
+				  
 				if($dbO !== false) foreach($dbO as $row){
 					$userAlias[]=$row['UserName'];
 					$mailAddys[]=$row['EMailAddress'];
 				}//end while
-				//wurde ein Nachname eingegeben?
+				//wurden die geforderten Angaben gemacht?
 				if(trim($_REQUEST['lastname'])==''){
-					$errors[]="Bitte geben Sie Ihren Nachnamen ein.";
+					$errors['lastname']="Bitte geben Sie Ihren Nachnamen ein.";
 				}
-###  firstname nicht vorname
 				if(trim($_REQUEST['firstname'])==''){
-					$errors[]="Bitte geben Sie Ihren Vornamen ein.";
+					$errors['firstname']="Bitte geben Sie Ihren Vornamen ein.";
 				}
 				if(trim($_REQUEST['username'])==''){
-					$errors[]="Bitte geben Sie einen Usernamen ein.";
+					$errors['username']="Bitte geben Sie einen Usernamen ein.";
 				}
 				elseif (!preg_match('/^\w+$/', trim($_REQUEST['username']))){
-					$errors[]="Benutzen Sie bitte nur Buchstaben, Zahlen und Unterstrich.";
+					$errors['usernameCharacters']="Benutzen Sie bitte nur Buchstaben, Zahlen und Unterstrich.";
 				}
-				//prüfen, ob der gewünschte Username bereits vergeben wurde
+				//prï¿½fen, ob der gewuenschte Username bereits vergeben wurde
 				elseif(in_array(trim($_REQUEST['username']), $userAlias)){
-					$errors[]="Der gewählte Username ist bereits vergeben.";
+					$errors['usernameUsed']="Der gew&auml;hlte Username ist bereits vergeben.";
 				}
-				//prüfen, ob ein Passwort gewählt wurde
+				//pruefen, ob ein Passwort gewaehlt wurde
 				if(trim($_REQUEST['password'])==''){
-					$errors[]="Bitte geben Sie ein Passwort ein.";
+					$errors['password']="Bitte geben Sie ein Passwort ein.";
 				}
 				//elseif(strlen(trim($_REQUEST['password']))<6)
-				//	$errors[]="Das von Ihnen gewählte Passwort ist zu kurz. Bitte mindestens 6 Zeichen.";
+				//	$errors[]="Das von Ihnen gewaehlte Passwort ist zu kurz. Bitte mindestens 6 Zeichen."; // wenn das gewarhlte Passwort eine bestimmte Laenge haben muss, Pruefung
 				
-				//prüfen, ob das Passwort wiederholt wurde
+				//pruefen, ob das Passwort wiederholt wurde
 				if(trim($_REQUEST['confirmpw'])==''){
-					$errors[]="Bitte wiederholen Sie Ihr gewünschtes Passwort.";
+					$errors['passwordConfirm']="Bitte wiederholen Sie Ihr gew&uuml;nschtes Passwort.";
 				}
-				//prüfen, ob das Passwort und die Wiederholung voneinander abweichen
+				//pruefen, ob das Passwort und die Wiederholung voneinander abweichen
 				elseif (trim($_REQUEST['password'])!=trim($_REQUEST['confirmpw'])){
-					$errors[]="Passwort und Passwortwiederholung stimmen nicht überein. Bitte versuchen Sie es erneut.";
+					$errors['passwordConfirmFalse']="Passwort und Passwortwiederholung stimmen nicht &uuml;berein. Bitte versuchen Sie es erneut.";
 				}
-					//prüfen, ob eine Mail-Adresse eingegeben wurdetrim
+					//pruefen, ob eine Mail-Adresse eingegeben wurde, trim zum beschneiden der Zeichenkette
 				if(trim($_REQUEST['email'])==''){
-					$errors[]="Bitte geben Sie eine E-Maiadresse ein.";
-				}elseif(!preg_match('§^[\w\.-]+@[\w\.-]+\.[\w]{2,4}$§', trim($_REQUEST['email']))){
-### [] vergessen
-					$errors[]="Die eingegebene Email hat ein ungültiges Format.";
+					$errors['email']="Bitte geben Sie eine E-Maiadresse ein.";
+				}elseif(!preg_match('ï¿½^[\w\.-]+@[\w\.-]+\.[\w]{2,4}$ï¿½', trim($_REQUEST['email']))){
+					$errors['emailFalse']="Die eingegebene Email hat ein ung&uuml;ltiges Format.";
 				}elseif(in_array(trim($_REQUEST['email']), $mailAddys)){
-					$errors[]="Die von Ihnene angegebene E-Mailadresse wird bereits genutzt.";
+					$errors['emailUsed']="Die von Ihnene angegebene E-Mailadresse wird bereits genutzt.";
 				}
 		}//end else
 			
 			if(count($errors) > 0){
 				echo "Leider konnte Ihr Account nicht erstellt werden. <br />
 					 Bitte lesen Sie die folgenden Anmerkungen und versuchen Sie es erenut.<br />";
-###  §errors statt $errors das ist ohne Syntaxhighlighting mal echt schwer zu sehen
 					foreach($errors as $error)
 						echo $error."<br />";
 			}else{
@@ -149,7 +148,7 @@ class Register extends Controller
 			 );
 
 	$insertID = $this->db->insert('FK_User', $insertArr, 'ssssssd');	
-### so bekommst du die MYSQL Fehlermeldungen zu sehen
+### MYSQL Fehlermeldungen anzeigen
 	if($insertID === false){
 		var_dump( $this->db->getErrorList() );
 	}
@@ -164,21 +163,7 @@ class Register extends Controller
 	
 ############################################
 /*
-         ich wuerde $errors als assoziatives  array machen etwa so:
-		$errors['password']="Bitte geben Sie ein Passwort ein.";
-		$errors['confirmpw']="Bitte wiederholen Sie Ihr gewünschtes Passwort.";
-		
-		alle werte werden am Anfang mit leerstring initialisiert: $errors['password'] = '';
-	
-	         dann wird $errors in $this->displayData gespeichert, damit man im template darauf zugreifen kann
-			z.B.  $this->displayData ['formerrors'] = $errors;  
-	         
-			 
-		$this->displayData ['formerrors']  wird dann im template immer ( daher wichtig erst mit leerstring initialisieren	)  mit angezeigt
-		etwa so:
-	       <input id="username" type="text" name="username" />  <p class="formerror"> <?php echo  $displayData ['formerrors'] ['username'] ; ?> </p>
-		  ist ein Fehler vorhanden, wird er neben dem richtigen Feld angezeigt
-		  dann noch ne css klasse für formerror - irgendwie rot zB
+
 	
 	
 	und dann umleiten auf Hauptseite??? , 

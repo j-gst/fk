@@ -91,6 +91,10 @@ img{
 	
 }
 
+.formerror{
+	color: #FF0000;
+}
+
 .images {
 	
 	float: left;
