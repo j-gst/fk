@@ -1,3 +1,4 @@
+<!-- @autor: Beate Gericke, Gerrit Storm -->
 
 <?php 
 /**

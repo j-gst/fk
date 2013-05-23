@@ -1,3 +1,7 @@
+<!-- autor: gerrit Storm -->
+
+<!-- TODO Kommentieren -> Beate -->
+
 <?php if(! $displayData['error']){?> 
 <div class="gallery_header">
 

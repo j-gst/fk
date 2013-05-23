@@ -1,8 +1,9 @@
 <?php namespace classes;
 
-/** ??
- * ?? hast du das alles geschrieben, ist das immer so viel und kompliziert? ich bekomme Angst. oder wirkt das schlimmer als es ist?
- * Hier für Datenbank
+/*
+ * @autor: Gerrit Storm
+ * 
+ * Datenbankanbindung 
  */
  
  

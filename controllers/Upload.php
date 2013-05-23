@@ -3,7 +3,7 @@ namespace controllers;
 /**
 * Upload Controller
 * bearbeiten der Datei uploads (Bild- und ZIP-Dateien)
-* @Author: Beate Gericke, Gerrit Storm
+* @Author: Beate Gericke (Nebenautor, Mitgewirkt an: Bilddateien-Upload und Thumbnail-Berechnung), Gerrit Storm (Hauptautor)
 */
 class Upload extends Controller
 {
@@ -45,7 +45,7 @@ class Upload extends Controller
 
  
   /*
-   * Funktion saveImageToDB
+   * Funktion handelUpload
    * hier werden die eingegeben Daten in die Datenbank geschrieben
    */
   private function handleUpload(){
@@ -56,7 +56,7 @@ class Upload extends Controller
 	//var_dump($_REQUEST);
 	
 	
-	// Ist ine Datei ohne Fehler hochgeladen worden?
+	// Ist eine Datei ohne Fehler hochgeladen worden?
 	if(isset($_FILES['Durchsuchen']) && $_FILES['Durchsuchen']['error'] === 0){	
 		
 		// ist MIME gueltig (Bild oder Zip)? 
@@ -67,7 +67,7 @@ class Upload extends Controller
 		}
 		
 		
-		
+		//Titelinformation wird gespeichert
 		$titel = "[kein Titel]"; // Default-Titel
 		if(isset($_REQUEST['Bildtitel']) 
 		    && trim($_REQUEST['Bildtitel'] !== "")) {
@@ -89,7 +89,7 @@ class Upload extends Controller
 
 		
 		
-		// Ist MIME ZIP?
+		// Ist MIME ZIP?            
 		if ($mimeType == 'application/zip'){
 			
 			// ZIP entpacken

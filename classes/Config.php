@@ -1,5 +1,6 @@
 <?php namespace classes;
 /*
+ * @autor Gerrit Storm (Kommetare Beate Gericke)
  * Hier sind Konfigurationsdaten gepeichert
  */
 class Config{

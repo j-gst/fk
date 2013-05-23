@@ -1,5 +1,7 @@
 <?php namespace controllers;
-// Klasse Main, erbt von Controller
+/* Klasse Main, erbt von Controller
+ * @autor. Beate Gericke, Gerrit Storm
+ */
 class Main extends Controller
 {
   

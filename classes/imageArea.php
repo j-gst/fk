@@ -1,5 +1,8 @@
 <?php namespace classes;
-/* ?? warum hier gesondert?
+/* 
+ * @autor: Gerrit Storm (Kommentare Beate Gericke)
+ * 
+ * Erstellung der Klasse imageArea von der Ojekte erzeugt werden koennen
  * Initialisierung von Variablen für die imageArea.
  */
 class imageArea
@@ -12,9 +15,9 @@ class imageArea
 	public $thumbnail;
 	public $imgLink;
 	
-	public $commentsCount = 0;
+	public $commentsCount = 0;  // Kommentarzaehler
 	
-	// alle Kommentare und Kommentarinformationnen zu dem Bild
+	// alle Kommentare und Kommentarinformationen zu dem Bild
 	public $comments = array();
 	
 

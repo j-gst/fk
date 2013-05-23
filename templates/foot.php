@@ -1,4 +1,4 @@
-		
+<!-- @autor: ? Maike? -->		
 	</div><!-- ende class=content -->
 		
 		<!-- Der footer, der immer gleich bleibt, noch zu befüllen -->

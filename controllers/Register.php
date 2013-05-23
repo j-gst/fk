@@ -2,6 +2,7 @@
 namespace controllers;
 /*]
  * Klasse Register
+ * @autor: Beate Gericke, Gerrit Storm
  */
 class Register extends Controller
 {

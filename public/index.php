@@ -1,4 +1,7 @@
 <?php
+/*
+ * @auto Beate Gericke, Gerrit Storm
+ */
 
 // autoloader fuer Klassen
 require_once "../classloader.php"; //einmalig einladen der classloader.php

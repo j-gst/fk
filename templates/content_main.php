@@ -1,10 +1,11 @@
 <!-- die Start/Übersichts-Seite -->
+<!--  @autor: Gerrit Storm, Beate Gericke (Nebenautor), Maike Schröder (Grundgerüst erste HTML-Version) -->
 
 <!-- im Inhaltsfeld werden Bilder aus der Datenbank ausgegeben. Hier findet die Strukturierung des Inhaltes statt. -->
 <div class="images">
 	
 	<!-- in der Schleife wird angeordnet, dass für jedes Bild das in der Datenbank liegt ein div class=imagearea angelegt wird 
-		und die Daten aus der Datenbak dort strukturiert eingefügt werden -->
+		und die Daten aus der Datenbank dort strukturiert eingefügt werden -->
 	<?php foreach ($displayData['images'] as $key => $img){?>
 	
 	<div class="imagearea">

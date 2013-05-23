@@ -1,3 +1,7 @@
+<!-- autor: Gerrit Storm -->
+
+<!-- TODO Kommentieren -->
+
 <div style="height:220px;color:red;">
 <?php if($user->isLoggedIn()){ ?>
 

@@ -1,3 +1,5 @@
+
+//@auto Maike Schröder
 function registercheck(){
 	var form = document.forms[1];
 	var inputs = form.elements;
@@ -28,7 +30,7 @@ function registercheck(){
 
 
 
-
+//@autor: Gerrit Storm
 function showHideComments(areaId , linkId) {
 
 		var element = document.getElementById(areaId);
@@ -45,7 +47,7 @@ function showHideComments(areaId , linkId) {
 		}
 }
 
-
+//@autor Gerrit Storm
 function showHideCommentInput(areaId , linkId) {
 		var element = document.getElementById(areaId);
 		var link = document.getElementById(linkId);
@@ -59,6 +61,7 @@ function showHideCommentInput(areaId , linkId) {
 		}
 }
 
+//@autor Gerrit Storm
 function hideAllComment(){
 	var elements_commentarea;
 	var elements_commentinput;
@@ -78,6 +81,7 @@ function hideAllComment(){
 
 // suche alle Elemente, die zu einer css Klasse gehoeren 
 // return: Array mit allen Elementen der Klasse ClassName
+//@autor Gerrit Strom
 function getElementsByClass(ClassName) {    
   var currentElement;
   var allElements;

@@ -1,9 +1,9 @@
 <?php
 /*
+ * @autor: Gerrit Storm, Maike Schröder, Thies Schillhorn
  * automatisches includen von php Klassen
  * bei Bedarf
  */
-
 
 
 // Class Loader wird registriert

@@ -1,4 +1,8 @@
-	<div class="formular">
+<!--  @autor: Beate Gericke, Maike Schröder (HTML-Gerüst) -->
+
+<!-- TODO kommentieren und Help-Fenster -->
+
+<div class="formular">
 		<fieldset class="form_field">	
 			<legend>Registrierung</legend>
 				<form class="register" enctype="multipart/form-data" action="?page=register&action=save" method="post">
