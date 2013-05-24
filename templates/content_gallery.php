@@ -29,7 +29,7 @@ Benutzer: <?php echo $displayData['archive']->user  ;?><br> <br>
 		<img src="<?php echo $img->thumbnail ?>">
 		</a>
 		
-	    <a href="index.php?page=detail&id=<?php echo $img->id ?>">
+	    <a href="index.php?page=imgdetails&imgid=<?php echo $img->id ?>">
         <span class="gallery_image_text">Details</span>
 	   </a>
 				
