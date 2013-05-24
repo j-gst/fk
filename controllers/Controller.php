@@ -61,37 +61,44 @@ abstract class Controller //Abstrakte Klasse Controller, von der die einzelnen C
 		 * Je nach Angabe wird der Parameter mitgegeben und die Variable controller belegt
 		 * wenn eine Klasse mit dem entsprechenden anmen existiert, wird von dieser ein Objekt erzeugt und zurückgeliefert
 		 */
+		$contrBase = '\\controllers\\';
 		$controller = '';
 		if(isset($target)){
 			switch($target){
 				case ('main'):
-					$controller = '\controllers\Main';
+					$controller = 'Main';
 					break;			
 				case ('upload'):
-					$controller = '\controllers\Upload';
+					$controller = 'Upload';
 					break;
 				case ('register'):
-					$controller = '\controllers\Register';
+					$controller = 'Register';
+					break;
+				case ('imgdetails'):
+					$controller = 'Imgdetails';
+					break;
+				case ('search'):
+					$controller = 'Search';
 					break;
 				case ('login'):
-					$controller = '\controllers\Login';
+					$controller = 'Login';
 					break;
 				case ('gallery'):
-					$controller = '\controllers\Gallery';
+					$controller = 'Gallery';
 					break;
 				case ('error'):
-					$controller = '\controllers\Error';
+					$controller = 'Error';
 					break;					
 				default:
 				    $errorMsg = "Diese Seite existiert leider nicht!";
-					$controller = '\controllers\Error';
+					$controller = 'Error';
 				break;
 
 			}
 		}else{
-			$controller = '\controllers\Main';
+			$controller = 'Main';
 		}
-		
+		$controller = $contrBase . $controller;
     if ( class_exists($controller , true) )
     {
       $returnObj = new $controller($user, $db, $conf,  $errorMsg);
@@ -99,7 +106,7 @@ abstract class Controller //Abstrakte Klasse Controller, von der die einzelnen C
     else 
     { 
 	  $errorMsg = "Diese Seite existiert leider nicht!";
-      $returnObj = new \controllers\Error($user, null, null, $errorMsg);
+      $returnObj = new $contrBase . Error($user, null, null, $errorMsg);
     }
 	return $returnObj;
  

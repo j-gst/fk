@@ -20,7 +20,7 @@
 		<?php } ?>
 		<br>
 		<div class="image">
-		<a href="<?php echo $img->imgLink ?>">
+		<a href="index.php?page=imgdetails&imgid=<?php echo $img->id ?>" > 
 		<img src="<?php echo $img->thumbnail ?>">
 		</a>
 		</div>
