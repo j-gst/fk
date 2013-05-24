@@ -250,7 +250,7 @@ INSERT INTO FK_Role (`Name`) VALUES ('trusted_user');
 INSERT INTO FK_Role (`Name`) VALUES ('admin');
 
 
--- Admin User
+-- Admin User | PW: admin
 INSERT INTO FK_User
 (`UserName`, `EMailAdress`,`FirstName`,`LastName`,`UserState`,`Role`, `Password`)
 VALUES ('admin', 'admin@test.de', 'Admin', 'Admin', 1, 
