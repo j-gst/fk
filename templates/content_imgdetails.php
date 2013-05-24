@@ -6,7 +6,7 @@ Hier findet die Strukturierung des Inhaltes statt. -->
 	class="images">
 	<!-- in der Schleife wird angeordnet, dass fuer jedes Bild das in der Datenbank liegt ein div class=imagearea angelegt wird 
 		und die Daten aus der Datenbank dort strukturiert eingefuegt werden -->
-	<?php foreach ($displayData['imgdetails'] as $key => $img){?>
+	<?php if (isset($displayData['imgdetails'])) foreach ($displayData['imgdetails'] as $key => $img){?>
 
 	<div class="imagearea">
 		<a name="<?php echo $img->id ?>">

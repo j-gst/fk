@@ -52,7 +52,7 @@ class Upload extends Controller
   
    
   
-	var_dump($_FILES);
+	//var_dump($_FILES);
 	//var_dump($_REQUEST);
 	
 	
