@@ -2,8 +2,8 @@
 
 <!-- im Inhaltsfeld werden die Details zu dem selektierten Bild aus der Datenbank ausgegeben. 
 Hier findet die Strukturierung des Inhaltes statt. -->
-<div
-	class="images">
+<div class="images">
+
 	<!-- in der Schleife wird angeordnet, dass fuer jedes Bild das in der Datenbank liegt ein div class=imagearea angelegt wird 
 		und die Daten aus der Datenbank dort strukturiert eingefuegt werden -->
 	<?php if (isset($displayData['imgdetails'])) foreach ($displayData['imgdetails'] as $key => $img){?>

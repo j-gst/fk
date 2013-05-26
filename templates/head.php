@@ -11,19 +11,43 @@
 		<!-- der div class=site umschließt den gestalteten Inhalt, um diesen im Browser ausrichten zu können -->
 		<div class="site">
 		<div id="header">
-			<h1>Fotoblog</h1>
+			<h1><?php echo $conf->title ?> </h1>
 		</div>
 				
 		<!-- die Menue-Bar -->
+		<!-- div class="menue" -->
 		<div id="navi">
 
 			
 			<ul>
-			<li><a href="index.php">Home</a></li>
-			<li><a href=".">Suche</a></li>
-			<li><a href="index.php?page=upload">Upload</a></li>
-			<li><a href="index.php?page=register">Register</a></li>
-			</ul>
+			<li>
+				<a href="index.php">Home</a></li>
+			<li><a href="#">Kategorie</a>
+					<div class="dropdown-menue">
+						<ul>
+							<li><a href="#"><?php echo $conf->categories['1']['name'] ?></a></li>
+							<li><a href="#"><?php echo $conf->categories['2']['name'] ?></a></li>
+							<li><a href="#"><?php echo $conf->categories['3']['name'] ?></a></li>
+							<li><a href="#"><?php echo $conf->categories['4']['name'] ?></a></li>
+						</ul>
+					</div>
+           </li>
+			<li><a href="#">User</a>
+					<div class="dropdown-menue">
+						<ul>
+							<li><a href="#">User 1</a></li>
+							<li><a href="#">User 2</a></li>
+							<li><a href="#">User 3</a></li>
+							<li><a href="#">User 4</a></li>
+						</ul>
+					</div>
+           </li>
+	    </ul>
+	
+			<form class="search-form" action="index.php?page=search" method="post">
+				<input type="text" name="s">
+				<button type="submit">go</button>
+			</form>	
 
 		</div>
 		
