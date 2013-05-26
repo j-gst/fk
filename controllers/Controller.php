@@ -1,8 +1,6 @@
 <?php namespace controllers;
 abstract class Controller //Abstrakte Klasse Controller, von der die einzelnen Controller erben. die Controller beinhalten die dynamischen Funktionalitäten.
 {
-  
-
 	/*
 	 * Initialisierung der benötigten Variablen.
 	 */
@@ -10,10 +8,10 @@ abstract class Controller //Abstrakte Klasse Controller, von der die einzelnen C
 	protected $db = null;
 	protected $conf = null;
 	protected $user = null;	
-    protected  $errorMsg = "Fehler";
+    protected $errorMsg = "Fehler";
   
 /*
- * ?? Pfeile verwirren mich. Hier geht es um die DB, was passiert hier?
+ * interne member mit uebergebenen Objecten belegen
  */
  public function  __construct($user, $db , $config, $errorMsg = "")
   {
@@ -31,10 +29,12 @@ abstract class Controller //Abstrakte Klasse Controller, von der die einzelnen C
   static function getInstance($target = null)
   {
 		$errorMsg = "";
-		$conf = new \classes\Config(); // ?? Variable conf wird belegt. new/classes/Config ist ein Pfas, aber Config() eine Methode?? ruft es die Klasse auf??
-		
-        $db = new \classes\MysqlDB($conf->DB_host, $conf->DB_user, // ?? da ich die Variable conf schon nicht ganz verstehe, hier auch nur Bahnhof ??
-		                           $conf->DB_pw, $conf->DB_db, $conf->DB_showErrors); // ??  Die Pfeile verwirren mich generell noch ??
+		// lade die Konfiguration
+		$conf = new \classes\Config();
+		$conf->loadConfig();
+		// verwende die geladenenen oder standard-Konfigurationswerte zum DB-Verbindungsaufbau
+        $db = new \classes\MysqlDB($conf->DB_host, $conf->DB_user,
+		                           $conf->DB_pw, $conf->DB_db, $conf->DB_showErrors); 
  	  
 	    // gibt es einen Datenbankfehler?
 		$dbErrors = $db->getErrorList();
@@ -47,9 +47,6 @@ abstract class Controller //Abstrakte Klasse Controller, von der die einzelnen C
 		
 		$user = new \classes\User($db); // User Objekt
 		
-		
-		
-		
 		$returnObj = null;
 		
 		
@@ -59,7 +56,7 @@ abstract class Controller //Abstrakte Klasse Controller, von der die einzelnen C
 		
 		/*
 		 * Je nach Angabe wird der Parameter mitgegeben und die Variable controller belegt
-		 * wenn eine Klasse mit dem entsprechenden anmen existiert, wird von dieser ein Objekt erzeugt und zurückgeliefert
+		 * wenn eine Klasse mit dem entsprechenden Namen existiert, wird von dieser ein Objekt erzeugt und zurückgeliefert
 		 */
 		$contrBase = '\\controllers\\';
 		$controller = '';
@@ -67,6 +64,8 @@ abstract class Controller //Abstrakte Klasse Controller, von der die einzelnen C
 			switch($target){
 				case ('main'):
 					$controller = 'Main';
+				case ('startpage'):
+					$controller = 'Startpage';
 					break;			
 				case ('upload'):
 					$controller = 'Upload';
@@ -96,7 +95,9 @@ abstract class Controller //Abstrakte Klasse Controller, von der die einzelnen C
 
 			}
 		}else{
-			$controller = 'Main';
+		//TODO: unterscheidung zwischen eingeloggt oder nicht entsprechende Controller laden
+			//$controller = 'Main';
+			$controller = "Startpage";
 		}
 		$controller = $contrBase . $controller;
     if ( class_exists($controller , true) )
@@ -119,12 +120,15 @@ abstract class Controller //Abstrakte Klasse Controller, von der die einzelnen C
   
   /*
    * Funktion, die einen Parameter erwartet. 
-   * die Variable displaydata vird mit einem Array belegt
-   * Die main.php wird eingebunden, dort werden weitere Angaben gemacht
+   * die Variable displaydata wird mit einem Array belegt
+   * Die main.php wird eingebunden, dort werden weitere Angaben gemacht.
+   * 
+   * 20130526 / Thies Schillhorn: aus xml-Datei geladende Konfiguration verf�gbar machen 
    */
   protected function display($contentTpl){
     $displayData = $this->displayData;
     $user = $this->user;	
+    $conf = $this->conf;
 	include "../templates/main.php";
   
   }
@@ -135,7 +139,8 @@ abstract class Controller //Abstrakte Klasse Controller, von der die einzelnen C
  protected function redirectOnInsufficientRights(array $rights){
 	foreach ($rights as $right){
 		if( ! $this->user->checkRight($right) ){
-			$this->display("insufficient_rights"); 
+			$this->display("start"); 
+			// $this->display("insufficient_rights"); 
 			exit;
 		}
 	}

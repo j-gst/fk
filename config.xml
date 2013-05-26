@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<blog>
+   <titel>Der Fotoblogger</titel>
+   <kategorien>
+     <kategorie>
+        <id>1</id>
+        <name>Kategorie1</name>
+        <comment>Kategorie eins</comment>
+     </kategorie>
+     <kategorie>
+        <id>2</id>
+        <name>Kategorie2</name>
+        <comment>Kategorie zwei</comment>
+     </kategorie>
+     <kategorie>
+        <id>3</id>
+        <name>Kategorie3</name>
+        <comment>Kategorie drei</comment>
+     </kategorie>
+     <kategorie>
+        <id>4</id>
+        <name>Kategorie4</name>
+        <comment>Kategorie vier</comment>
+     </kategorie>
+   </kategorien>
+   <dbserver>
+      <host>127.0.0.1</host>
+      <port>3306</port>
+      <user>root</user>
+      <password></password>
+      <dbname>FotoKommentare</dbname>
+   </dbserver>
+   
+   <impressum>Blablabla
+   </impressum>
+</blog> 
