@@ -165,10 +165,46 @@ class MysqlDB {
      * @return boolean Operation successful? 
      */
     private function connect($db_host, $db_user, $db_pass, $db_database) {
-        $this->dbh = new \mysqli($db_host, $db_user, $db_pass, $db_database);
-
+    	if ($this->existsDb($db_host, $db_user, $db_pass, $db_database) == true){
+            $this->dbh = new \mysqli($db_host, $db_user, $db_pass, $db_database);
+    	}
         return !$this->error($this->dbh->connect_errno, $this->dbh->connect_error);
     }
+    
+    
+    /**
+     * Überprüft, ob die Datenbank bereits existiert
+     * Existiert die Datenbank noch nicht, so wird diese angelegt.
+     * @param string $db_host The database-host
+     * @param string $db_user The database-user
+     * @param string $db_pass The database-password
+     * @param string $db_database The database to use
+     * @return boolean true if database exists and is connectable 
+     * @autor Thies Schillhorn, 20130526
+     */
+    private function existsDb($db_host, $db_user, $db_pass, $db_database) {
+    	// Verbindungsvariable samt Zugangsdaten festlegen und Verbindung testen
+    	$dbc = mysqli_connect($db_host, $db_user, $db_pass, $db_database);
+    	
+    	// Verbindung überprüfen
+    	if (mysqli_connect_errno()) {
+    		$dbc = mysqli_connect($db_host, $db_user, $db_pass);
+    		$statements = file_get_contents('../script/'.$db_database.'.sql', true);
+    		$a = explode(";", $statements);
+    		foreach ($a as $stmt) {
+    			$dbc->query($stmt);
+    	        if (mysqli_connect_errno()) {
+    	        	printf("Probleme beim Anlegen der Datenbank: %s\n", mysqli_connect_error());
+    	        }
+    		}
+    	    $dbc = mysqli_connect($db_host, $db_user, $db_pass, $db_database);
+    	    if (mysqli_connect_errno()) {
+    	    	return false;
+    	    }
+    	}
+    	return true;
+    }
+    
 
     /*******************************
      ** methods to perform querys **
