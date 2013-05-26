@@ -15,7 +15,7 @@
 		</div>
 				
 		<!-- die Menue-Bar -->
-		<div class="menue">
+		<div id="navi">
 
 			
 			<ul>
