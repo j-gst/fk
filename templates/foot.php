@@ -1,10 +1,11 @@
-<!-- @autor: ? Maike? -->		
+<!-- @autor: Maike Schröder -->
+<!-- @autor: Thies Schillhorn, 20130529 : Aufruf Impressum hinzugefügt -->		
 	</div><!-- ende class=content -->
 		
-		<!-- Der footer, der immer gleich bleibt, noch zu befÃ¼llen -->
+		<!-- Auf allen Unter-Seiten durchgehend gleichbleibende Darstellung des Seitenfusses -->
 		<div class="footer"><!-- footer -->
 		
-		<a href=""> Impressum </a>
+		<a href="index.php?page=impressum">Impressum</a>
 		<a href=""> About </a>
 		<a href=""> Help </a>
 		
@@ -12,7 +13,5 @@
 	</div><!-- ende class=site -->
 	<script type="text/javascript" src="js/main.js"></script>
 	</body>
-
-
 
 </html>

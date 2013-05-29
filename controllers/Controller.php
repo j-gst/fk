@@ -88,6 +88,9 @@ abstract class Controller //Abstrakte Klasse Controller, von der die einzelnen C
 				case ('error'):
 					$controller = 'Error';
 					break;					
+				case ('impressum'):
+					$controller = 'Impressum';
+					break;					
 				default:
 				    $errorMsg = "Diese Seite existiert leider nicht!";
 					$controller = 'Error';
