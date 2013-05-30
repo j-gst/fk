@@ -70,6 +70,12 @@ class MysqlDB {
      * @var int
      */
     private $transactionState = 0;
+    
+    
+    /**
+     * Existenz der DB Ueberprueft und ggflls angelegt
+     */
+    private $createNotExistingDbDone = false; 
 
     /**
      * Constant to represent the MySQL DATETIME format as a string to parse in date()
@@ -183,24 +189,27 @@ class MysqlDB {
      * @autor Thies Schillhorn, 20130526
      */
     private function existsDb($db_host, $db_user, $db_pass, $db_database) {
-    	// Verbindungsvariable samt Zugangsdaten festlegen und Verbindung testen
-    	$dbc = mysqli_connect($db_host, $db_user, $db_pass, $db_database);
-    	
-    	// Verbindung überprüfen
-    	if (mysqli_connect_errno()) {
-    		$dbc = mysqli_connect($db_host, $db_user, $db_pass);
-    		$statements = file_get_contents('../script/'.$db_database.'.sql', true);
-    		$a = explode(";", $statements);
-    		foreach ($a as $stmt) {
-    			$dbc->query($stmt);
-    	        if (mysqli_connect_errno()) {
-    	        	printf("Probleme beim Anlegen der Datenbank: %s\n", mysqli_connect_error());
-    	        }
+    	if ($this->createNotExistingDbDone === false) {
+    		$this->createNotExistingDbDone = true;
+    		// Verbindungsvariable samt Zugangsdaten festlegen und Verbindung testen
+    		$dbc = mysqli_connect($db_host, $db_user, $db_pass, $db_database);
+    		 
+    		// Verbindung überprüfen
+    		if (mysqli_connect_errno()) {
+    			$dbc = mysqli_connect($db_host, $db_user, $db_pass);
+    			$statements = file_get_contents('../script/'.$db_database.'.sql', true);
+    			$a = explode(";", $statements);
+    			foreach ($a as $stmt) {
+    				$dbc->query($stmt);
+    				if (mysqli_connect_errno()) {
+    					printf("Probleme beim Anlegen der Datenbank: %s\n", mysqli_connect_error());
+    				}
+    			}
+    			$dbc = mysqli_connect($db_host, $db_user, $db_pass, $db_database);
+    			if (mysqli_connect_errno()) {
+    				return false;
+    			}
     		}
-    	    $dbc = mysqli_connect($db_host, $db_user, $db_pass, $db_database);
-    	    if (mysqli_connect_errno()) {
-    	    	return false;
-    	    }
     	}
     	return true;
     }
