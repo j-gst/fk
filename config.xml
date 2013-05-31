@@ -1,47 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- @autor: Thies Schillhorn, 20130531 -->
+<!DOCTYPE blog SYSTEM "./config.dtd">
 <blog>
-   <titel>Der Fotoblogger</titel>
-   <kategorien>
-     <kategorie>
-        <id>1</id>
-        <name>Kategorie1</name>
-        <comment>Kategorie eins</comment>
-     </kategorie>
-     <kategorie>
-        <id>2</id>
-        <name>Kategorie2</name>
-        <comment>Kategorie zwei</comment>
-     </kategorie>
-     <kategorie>
-        <id>3</id>
-        <name>Kategorie3</name>
-        <comment>Kategorie drei</comment>
-     </kategorie>
-     <kategorie>
-        <id>4</id>
-        <name>Kategorie4</name>
-        <comment>Kategorie vier</comment>
-     </kategorie>
-   </kategorien>
-   <dbserver>
-      <host>127.0.0.1</host>
-      <port>3306</port>
-      <user>root</user>
-      <password></password>
-      <dbname>FotoKommentare</dbname>
-   </dbserver>
-   
-   <impressum>Beispielfirma    Gesellschaft mit beschränkter Haftung</impressum>
-   <impressum>Beispielstrasse 1</impressum>
-   <impressum>D-12345 Beispielstadt</impressum>
-   <impressum>Vertretungsberechtiger Geschäftsführer: Bernd Beispiel</impressum>
-   <impressum>Telefon: 0123 / 12 34 56</impressum>
-   <impressum>Telefax: 0123 / 12 34 56 - 7</impressum>
-   <impressum>E-Mail: info@beispielfirma.de</impressum>
-   <impressum>Registergericht: Amtsgericht Beispielstadt</impressum>
-   <impressum>Registernummer: HRB 12345</impressum>
-   <impressum>Stammkapital: € 12.456 Euro</impressum>
-   <impressum>Umsatzsteuer-Identifikationsnummer (USt-IdNr.) gem. § 27a UStG: DE 123456789</impressum>
-   <impressum>Inhaltlich Verantwortlicher nach § 55 Abs. 2 RStV: Benjamin Beispiel (Anschrift wie zuvor genannt)
-   </impressum>
-</blog> 
+	<titel>Der Fotoblogger</titel>
+	<kategorien>
+		<kategorie>
+			<id>1</id>
+			<name>Kategorie1</name>
+			<comment>Kategorie eins</comment>
+		</kategorie>
+		<kategorie>
+			<id>2</id>
+			<name>Kategorie2</name>
+			<comment>Kategorie zwei</comment>
+		</kategorie>
+		<kategorie>
+			<id>3</id>
+			<name>Kategorie3</name>
+			<comment>Kategorie drei</comment>
+		</kategorie>
+		<kategorie>
+			<id>4</id>
+			<name>Kategorie4</name>
+			<comment>Kategorie vier</comment>
+		</kategorie>
+	</kategorien>
+	<dbserver>
+		<host>127.0.0.1</host>
+		<port>3306</port>
+		<user>root</user>
+		<password />
+		<dbname>FotoKommentare</dbname>
+	</dbserver>
+	<impressum>Beispielfirma Gesellschaft mit beschränkter Haftung</impressum>
+	<impressum>Beispielstrasse 1</impressum>
+	<impressum>D-12345 Beispielstadt</impressum>
+	<impressum>Vertretungsberechtiger Geschäftsführer: Bernd Beispiel </impressum>
+	<impressum>Telefon: 0123 / 12 34 56</impressum>
+	<impressum>Telefax: 0123 / 12 34 56 - 7</impressum>
+	<impressum>E-Mail: info@beispielfirma.de</impressum>
+	<impressum>Registergericht: Amtsgericht Beispielstadt</impressum>
+	<impressum>Registernummer: HRB 12345</impressum>
+	<impressum>Stammkapital: € 12.456 Euro</impressum>
+	<impressum>Umsatzsteuer-Identifikationsnummer (USt-IdNr.) gem. § 27a UStG: DE 123456789</impressum>
+	<impressum>Inhaltlich Verantwortlicher nach § 55 Abs. 2 RStV: Benjamin Beispiel (Anschrift wie zuvor genannt)
+	</impressum>
+</blog>
