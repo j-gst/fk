@@ -42,6 +42,10 @@
 						</ul>
 					</div>
            </li>
+           <!--  Thies Schillhorn: Upload wieder einfuegen, wenn registrierter Benutzer eingeloggt -->
+	       <?php if ( $user->isLoggedIn() ){ ?>
+			  <li><a href="index.php?page=upload">Upload</a></li>
+		   <?php } ?>           
 	    </ul>
 	
 			<form class="search-form" action="index.php?page=search" method="post">
