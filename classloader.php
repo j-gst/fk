@@ -16,12 +16,12 @@ spl_autoload_register(function($class)
 
     // Thies Schillhorn, 20130522 : Anpassungen der Pfade je nach OS-System
     $pathPre = ".";
-	$osInfo = php_uname('s');
-	if (strtoupper(substr($osInfo, 0, 3)) === 'WIN') {
-	    $pathPre = "";
-	} else {
-	    $pathPre = "..";
-	}
+    $osInfo = php_uname('s');
+    if (strtoupper(substr($osInfo, 0, 3)) === 'WIN') {
+        $pathPre = "";
+    } else {
+        $pathPre = "..";
+    }
 
     if (is_readable($file)) {
         require_once $file;
