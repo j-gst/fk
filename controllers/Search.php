@@ -49,6 +49,9 @@ class Search extends Controller
 	}
 
 
+	/**
+	 * Initializierung zur Anzeige der gefunden Bilder
+	 */
 	private function showResult($sql) {
 
 		$images = $this->db->query_array($sql);
