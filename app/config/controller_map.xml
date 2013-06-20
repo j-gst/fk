@@ -1,0 +1,72 @@
+<?xml version='1.0' standalone='yes'?>
+
+<!--Festlegung page-Parameter zu Seiten-Controller-->
+<!--und der benoetigten Rechte-->
+<!--Author: Gerrit Storm-->
+
+<controllers>
+    <controller>
+        <parameter>main</parameter>
+        <c_name>Main</c_name>
+        <rights>
+            <right>view</right>
+        </rights>
+    </controller>
+    <controller>
+        <parameter>upload</parameter>
+        <c_name>Upload</c_name>
+        <rights>
+            <right>picture_upload</right>
+        </rights>
+    </controller>
+    <controller>
+        <parameter>register</parameter>
+        <c_name>Register</c_name>
+    </controller>	
+    <controller>
+        <parameter>imgdetails</parameter>
+        <c_name>Imgdetails</c_name>
+        <rights>
+            <right>view</right>
+        </rights>
+    </controller>
+    <controller>
+        <parameter>login</parameter>
+        <c_name>Login</c_name>
+    </controller>
+    <controller>
+        <parameter>gallery</parameter>
+        <c_name>Gallery</c_name>
+        <rights>
+            <right>view</right>
+        </rights>
+    </controller>	
+	<controller>
+        <parameter>admin</parameter>
+        <c_name>Admin</c_name>
+        <rights>
+            <right>admin</right>
+        </rights>
+    </controller>	
+    <controller>
+        <parameter>error</parameter>
+        <c_name>Error</c_name>
+    </controller>
+    <controller>
+        <parameter>kontakt</parameter>
+        <c_name>Kontakt</c_name>
+    </controller>	
+    <controller>
+        <parameter>impressum</parameter>
+        <c_name>Impressum</c_name>
+    </controller>	
+    <controller>
+        <parameter>search</parameter>
+        <c_name>Search</c_name>
+    </controller>
+     <controller>
+        <parameter>faq</parameter>
+        <c_name>FAQ</c_name>
+    </controller>  	    	
+</controllers>
+	
