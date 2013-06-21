@@ -6,7 +6,7 @@
  */
 ?>
 <div class="content-full">
-	<div class"datenschutz">
+	<div class="content">
 
 		<h2>Hilfe / FAQ / Allgemeine Fragen zu Fotoblog </h2>
 		
