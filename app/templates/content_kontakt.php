@@ -13,7 +13,7 @@
         $mailto = $displayData['kontakt']->mymail;
     }
 
-    // Holen der Eingaben oder Füllen mit einer leeren Vorgabe
+    // Holen der Eingaben oder Fuellen mit einer leeren Vorgabe
     $eingabefehler = "";
     $name = isset($_POST["name"]) ? $_POST["name"] : "";
     $mailfrom = isset($_POST["mailfrom"]) ? $_POST["mailfrom"] : "";
@@ -24,7 +24,7 @@
     $formular = "<form class='kontakt' enctype='multipart/form-data' action='?page=kontakt&amp;action=save' method='post'>
 <table>
 <tr>
-<td colspan='2' class='pflichtfeld'><!-- Raum für evtl. Fehlermeldungsanzeige --></td>
+<td colspan='2' class='pflichtfeld'><!-- Raum fuer evtl. Fehlermeldungsanzeige --></td>
 </tr>
 <tr class='hintergrund'>
 <td>
@@ -63,7 +63,7 @@
 <tr class='hintergrund'>
 <th colspan='2'>
 <br><span class='pflichtfeld'>&#10034;</span>
-<small>Bitte alle Pflichtfelder ausfüllen!</small> &nbsp; &nbsp;
+<small>Bitte alle Pflichtfelder ausf&uuml;llen!</small> &nbsp; &nbsp;
 <input type='submit' name='save' value='Formular absenden'>
 </th>
 </tr>
@@ -130,7 +130,7 @@ Nachricht: $nachricht
         {
             // Eingabefehler und Formular ausgeben
             echo str_replace("<!-- Fehleranzeige -->",
-                             "<b>Ihre Nachricht konnte aus folgende". (($fehlercount == 1) ? "m Grund" : "n Gründen") . " noch nicht versendet:</b><br>"
+                             "<b>Ihre Nachricht konnte aus folgende". (($fehlercount == 1) ? "m Grund" : "n Gr&uuml;nden") . " noch nicht versendet:</b><br>"
                              . $eingabefehler, $formular);
         }
     }
