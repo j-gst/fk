@@ -10,8 +10,8 @@
  * Das Applikationsverzeichnis und das Bildverzeichnis 
  * sollten ausserhalb des Server Root Verzeichnisses liegen
  */
-$appPath = "/wamp/www/FK_trans/app/";
-$imgPah = "/wamp/www/FK_trans/images/";
+$appPath = "../app/";
+$imgPah = "../../images/";
 /*
  /************************************************************/
  

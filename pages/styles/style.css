@@ -100,7 +100,7 @@ img{
 
 .menue li{
 	float: left;
-	width: 18%;	
+	width: 15%;	
 	margin-top:0px;
 	list-style-type:none;
 	/*background-color: grey;*/
@@ -136,8 +136,11 @@ img{
     float: none;
     background: #DDD;
     height:25px;
-    width:120px;
+    width:100px;
     padding: 3px;
+}
+.dropdown-menue li:hover{
+    background: silver;
 }
 .dropdown-menue a{
     color: black;

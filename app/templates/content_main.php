@@ -13,7 +13,7 @@
 	<?php foreach ($displayData['images'] as $key => $img){?>
 	
 	<div class="imagearea">
-	    <a  name="<?php echo $img->id ?>">
+	    <a  id="<?php echo $img->id ?>">
 	    <b style="display: inline; font-size:large;"><?php echo $img->titel ?></b>
 		</a>
 		<?php if($img->archive){ ?>
@@ -24,7 +24,7 @@
 		<br>
 		<div class="image">
 		<a href="index.php?image=<?php echo $img->id ?>" > 
-		<img src="index.php?tn=1&amp;id=<?php echo $img->id ?>">
+		<img alt="Bild" src="index.php?tn=1&amp;id=<?php echo $img->id ?>">
 		</a>
 		</div>
 		<div class="imagetext">
