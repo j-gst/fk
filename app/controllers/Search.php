@@ -34,7 +34,7 @@ class Search extends Controller
 
         $sql = "
 SELECT * FROM `FK_Picture`
-WHERE ".$query.";" ;
+WHERE ".$query." AND PictureState != -1;" ;
 
         return $this->showResult($sql);
     }
@@ -55,16 +55,13 @@ WHERE ".$query.";" ;
                 $displayImages[$key]->archive = $img['ArchiveId'];
                 $date = new \DateTime($img['CreaDateTime']);
                 $displayImages[$key]->date = $date->format('d.m.Y H:i:s');
-                $displayImages[$key]->user = $img['UserName'] ? $img['UserName'] : 'Gast';
+                $displayImages[$key]->user = isset($img['UserName']) ? $img['UserName'] : 'Gast';
                 $displayImages[$key]->desc = nl2br(htmlentities($img['Description']));
-                $displayImages[$key]->thumbnail = $this->conf->imgDir."tn_image".$img['Id'].".jpg";
-                $displayImages[$key]->imgLink = $this->conf->imgDir."image".$img['Id'].".jpg";
-
-
+   
                 // zu jedem Bild noch die Kommentare laden
                 $q = sprintf('SELECT UserName,Comment,CreaDateTime
 FROM FK_Comments LEFT JOIN FK_User ON UserId = FK_User.Id
-WHERE PictureId = %d ORDER BY CreaDateTime ',$img['Id']);
+WHERE  CommentState != -1 AND  PictureId = %d ORDER BY CreaDateTime ',$img['Id']);
 
                 $comments = array();
                 $comments = $this->db->query_array($q);

@@ -31,10 +31,13 @@ class Main extends Controller
             // Fehlerseite zeigen wenn Recht save_comment nicht vorhanden
             $this->redirectOnInsufficientRights(array('comment_make'));
             $this->saveCommentToDB();
+			
+			// wenn der Nutzer von der Detailseite kommt
+			// wird er da auch wieder landen
 			if( isset($_REQUEST['detailpage']) && $_REQUEST['detailpage'] == 1){
-			   header( 'Location: ?page=imgdetails&imgid=12' ) ;
+			   header( 'Location: ?page=imgdetails&imgid='.$_REQUEST['id'] ) ;
 			}
-        }
+        } //elseif
         
 
         $this->displayData['images'] = $this->getImagesFromDB();
@@ -61,7 +64,7 @@ class Main extends Controller
          
         // query String
         $q = sprintf('SELECT FK_Picture.Id, Name, CreaDateTime, Description, UserName, ArchiveId
-			FROM FK_Picture LEFT JOIN FK_User ON FK_User.Id = FK_Picture.UserId
+			FROM FK_Picture LEFT JOIN FK_User ON FK_User.Id = FK_Picture.UserId WHERE  PictureState != -1 
 			ORDER BY CreaDateTime DESC LIMIT %d, %d', $offset, $this->conf->showImgNum);
          
         // alle Bildinformationen aus der DB laden
@@ -78,14 +81,11 @@ class Main extends Controller
             $displayImages[$key]->date = $date->format('d.m.Y H:i:s');
             $displayImages[$key]->user = $img['UserName'] ? $img['UserName'] : 'Gast';
             $displayImages[$key]->desc = nl2br(htmlentities($img['Description']));
-            $displayImages[$key]->thumbnail = $this->conf->imgDir."tn_image".$img['Id'].".jpg";
-            $displayImages[$key]->imgLink = $this->conf->imgDir."image".$img['Id'].".jpg";
-
 
             // zu jedem Bild noch die Kommentare laden
             $q = sprintf('SELECT UserName,Comment,CreaDateTime
 				FROM FK_Comments LEFT JOIN FK_User ON UserId = FK_User.Id
-				WHERE PictureId = %d ORDER BY CreaDateTime ',$img['Id']);
+				WHERE CommentState != -1 AND PictureId = %d ORDER BY CreaDateTime ',$img['Id']);
 
             $comments = array();
             $comments = $this->db->query_array($q);
@@ -112,7 +112,7 @@ class Main extends Controller
     private function getPagination(){
 
         // Anzahl der Bilder in der DB
-        $q = "SELECT COUNT(Id) AS COUNT FROM FK_Picture";
+        $q = "SELECT COUNT(Id) AS COUNT FROM FK_Picture WHERE PictureState != -1";
         $count = $this->db->query_array($q); 
         
         // die Anzahl der anzuzeigenden Seiten wird ermittelt

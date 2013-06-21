@@ -56,6 +56,10 @@
         <parameter>kontakt</parameter>
         <c_name>Kontakt</c_name>
     </controller>	
+	<controller>
+        <parameter>delete</parameter>
+        <c_name>Delete</c_name>
+    </controller>	
     <controller>
         <parameter>impressum</parameter>
         <c_name>Impressum</c_name>

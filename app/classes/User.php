@@ -52,11 +52,7 @@ class User{
 
         $this->getRights();
 
-        if($this->checkRight("view")){
-            $_SESSION['view'] = true;
-        }else{
-            $_SESSION['view'] = false;
-        }
+
     }//__construct()
 
 
@@ -87,8 +83,43 @@ class User{
     public function checkRight($right){
         return in_array($right,$this->rights);
     }
+	
+	/**
+     * Pruefen ob Recht vorhanden Kommentar zu loeschen
+     * @param int $commentUserId
+     * @return boolean
+	*/
+    public function isAllowedToDeleteComment($commentUserId){
+		if($this->checkRight('comment_delete_all') ){
+			return true;
+		}
+		elseif($this->checkRight('comment_delete_own') &&  $this->id === $commentUserId && $commentUserId !== NULL  ) {
+		
+				return true;
+		}else{
+				return false;		
+		}
+	}// isAllowedToDeleteComment()
 
-
+	
+	/**
+     * Pruefen ob Recht vorhanden Bild zu loeschen
+     * @param int $picUserId
+     * @return boolean
+	*/
+    public function isAllowedToDeletePicture($picUserId){
+		if($this->checkRight('picture_delete_all') ){
+			return true;
+		}
+		elseif($this->checkRight('picture_delete_own') &&  $this->id === $picUserId && $picUserId !== NULL  ) {
+		
+				return true;
+		}else{
+				return false;		
+		}
+	}// isAllowedToDeleteComment()
+	
+	
 //getter Methoden
     public function getUsername() {
         return $this->username;

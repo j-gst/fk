@@ -7,6 +7,7 @@ class imageArea
 {
     public $titel;
 	public $id;
+	public $userId;
 	public $date;
 	public $user;
 	public $desc;

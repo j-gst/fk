@@ -36,7 +36,7 @@ session_start();
 error_reporting(0);
 
 // Melde alle PHP Fehler - fuer debuging
-// error_reporting(E_ALL);
+error_reporting(E_ALL);
 
 
 

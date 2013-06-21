@@ -32,6 +32,7 @@ Hochgeladen am:
 <br> <br>
 <?php echo $img->desc ?>
 </div>
+<a href="index.php?page=imgdetails&amp;imgid=<?php echo $img->id ?>" > Details </a>
 <div class="comment">
 
 <?php echo $img->commentsCount; ?>

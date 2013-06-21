@@ -30,10 +30,10 @@ class Imgdetails extends Controller
 		 
 		// query String um Bildinformationen aus der DB zu holen
 		$q = sprintf('SELECT distinct FK_Picture.Id, FK_Picture.Name, FK_Picture.CreaDateTime,
-				FK_Picture.Description,
+				FK_Picture.Description, FK_Picture.UserId,
 				(SELECT UserName from FK_User where FK_User.Id = FK_Picture.UserId) AS UserName
 				FROM FK_Picture
-				WHERE FK_Picture.Id = %d', $myPicId);
+				WHERE PictureState != -1 AND FK_Picture.Id = %d', $myPicId);
 
 		// alle Bildinformationen aus der DB laden
 		$images = $this->db->query_array($q);
@@ -43,18 +43,17 @@ class Imgdetails extends Controller
 		foreach($images as $key => $img){
 			$displayImages[$key] = new \classes\imageArea();
 			$displayImages[$key]->id = $img['Id'];
+			$displayImages[$key]->userId = $img['UserId'];
 			$displayImages[$key]->titel = htmlentities($img['Name']);
 			$date = new \DateTime($img['CreaDateTime']);
 			$displayImages[$key]->date = $date->format('d.m.Y H:i:s');
 			$displayImages[$key]->user = $img['UserName'] ? $img['UserName'] : 'Gast';
 			$displayImages[$key]->desc = nl2br(htmlentities($img['Description']));
-			$displayImages[$key]->thumbnail = $this->conf->imgDir."tn_image".$img['Id'].".jpg";
-			$displayImages[$key]->imgLink = $this->conf->imgDir."image".$img['Id'].".jpg";
 
 			// zu jedem Bild noch die Kommentare laden
-			$q = sprintf('SELECT UserName,Comment,CreaDateTime
+			$q = sprintf('SELECT FK_Comments.Id,UserName,Comment,CreaDateTime, FK_Comments.UserId
 					FROM FK_Comments LEFT JOIN FK_User ON UserId = FK_User.Id
-					WHERE PictureId = %d ORDER BY CreaDateTime ',$img['Id']);
+					WHERE  CommentState != -1 AND PictureId = %d ORDER BY CreaDateTime ',$img['Id']);
 			$comments = array();
 			$comments = $this->db->query_array($q);
 
@@ -66,6 +65,8 @@ class Imgdetails extends Controller
 					$displayImages[$key]->comments[$cKey]['Comment'] = nl2br($comment['Comment']);
 					$cDate = new \DateTime($comment['CreaDateTime']);
 					$displayImages[$key]->comments[$cKey]['date'] = $cDate->format('d.m.Y H:i:s');
+					$displayImages[$key]->comments[$cKey]['Id'] = $comment['Id'];
+					$displayImages[$key]->comments[$cKey]['UserId'] = $comment['UserId'];
 
 				}//foreach($comments as $cKey => $comment)
 			}
