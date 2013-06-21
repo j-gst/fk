@@ -9,6 +9,8 @@
 		<div class="footer"><!-- footer -->
     		<a href="index.php?page=impressum"> Impressum </a>
     		<a href="index.php?page=faq"> FAQ </a>
+			<a href="index.php?page=agb"> AGB </a>
+			<a href="index.php?page=datenschutz"> Datenschutz </a>
     		<a style="cursor:pointer;" id="mypopup" > Hilfe </a>
     		<a href="index.php?page=kontakt"> Kontakt </a>
 		</div>

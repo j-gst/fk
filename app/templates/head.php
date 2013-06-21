@@ -79,7 +79,7 @@
 </form>
 
 
-<div class="content">
+<div class="sitecontent">
 
 <!-- Das Login-Feld -->
 <div class="login"><?php if ( $user->isLoggedIn() ){ ?>
