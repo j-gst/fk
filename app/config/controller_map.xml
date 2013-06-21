@@ -67,6 +67,14 @@
      <controller>
         <parameter>faq</parameter>
         <c_name>FAQ</c_name>
-    </controller>  	    	
+    </controller>
+         <controller>
+        <parameter>datenschutz</parameter>
+        <c_name>Datenschutz</c_name>
+    </controller> 	
+    <controller>
+        <parameter>agb</parameter>
+        <c_name>AGB</c_name>
+    </controller>
 </controllers>
 	
