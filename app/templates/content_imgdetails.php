@@ -16,7 +16,7 @@ Hier findet die Strukturierung des Inhaltes statt. -->
 	<?php if (isset($displayData['imgdetails'])) foreach ($displayData['imgdetails'] as $key => $img){?>
 
 	<div class="imagearea">
-		<a name="<?php echo $img->id ?>">
+		<a id="<?php echo $img->id ?>">
 			<h2> <!--  Titel des Bildes -->
 				<?php echo $img->titel ?>
 			</h2>
@@ -58,7 +58,7 @@ Hier findet die Strukturierung des Inhaltes statt. -->
 			<div > <!--  Kommentar eingeben -->
 				<form action="?p=<?php echo $displayData['p'],'#',$img->id ?>"
 					method="post">
-					<input type="hidden" name="detaipage" value="1">
+					<input type="hidden" name="detailpage" value="1">
 					<input type="hidden" name="id" value="<?php echo $img->id;?>">
 					<textarea name="comment_text" rows="10" cols="60"></textarea>
 					<input type="submit" name="save_comment" value="save comment">

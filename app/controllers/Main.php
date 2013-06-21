@@ -31,6 +31,9 @@ class Main extends Controller
             // Fehlerseite zeigen wenn Recht save_comment nicht vorhanden
             $this->redirectOnInsufficientRights(array('comment_make'));
             $this->saveCommentToDB();
+			if( isset($_REQUEST['detailpage']) && $_REQUEST['detailpage'] == 1){
+			   header( 'Location: ?page=imgdetails&imgid=12' ) ;
+			}
         }
         
 
