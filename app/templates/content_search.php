@@ -1,7 +1,7 @@
 <?php 
 /**
  * die Suchergebnisseite
- * @author  Thies Schillhorn, 20130526 
+ * @author  Thies Schillhorn, Gerrit Storm, Beate Gericke
  */
 ?>
 <!-- im Inhaltsfeld werden Bilder aus der Datenbank ausgegeben. Hier findet die Strukturierung des Inhaltes statt. -->
@@ -65,7 +65,7 @@ onclick="showHideCommentInput('commentinput_<?php echo $key;?>','showcommentinpu
             </div>
 
             <div class="commentinput" id="commentinput_<?php echo $key;?>">
-                <form action="?p=<?php echo $displayData['p'],'#',$img->id ?>"
+                <form action="index.php"
                     method="post">
                     <input type="hidden" name="id" value="<?php echo $img->id;?>">
                     <textarea name="comment_text" rows="10" cols="60"></textarea>

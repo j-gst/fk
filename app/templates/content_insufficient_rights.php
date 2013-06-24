@@ -1,7 +1,10 @@
-<!-- autor: Gerrit Storm -->
-
-<!-- TODO Kommentieren -->
-
+<?php 
+/**
+ * Template Fehlerseite bei fehlenden Berechtigungen
+ * mit Unterscheidung angemeldet oder nicht
+ * @author Gerrit Storm
+ */
+?>
 <div style="height:220px;color:red;">
 <?php if($user->isLoggedIn()){ ?>
 

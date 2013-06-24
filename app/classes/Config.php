@@ -1,6 +1,6 @@
 <?php namespace classes;
 /**
- * @author Gerrit Storm (Kommetare Beate Gericke)
+ * @author Gerrit Storm, Beate Gericke
  * @author Thies Schillhorn: Erweiterungen zum Laden einiger Konfigurationsdaten aus einer XML-Datei
  * Hier sind Konfigurationsdaten gepeichert bzw. werden aus einer Datei geladen
  */

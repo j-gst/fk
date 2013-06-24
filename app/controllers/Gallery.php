@@ -2,8 +2,8 @@
 namespace controllers;
 /**
  * Gallery Controller
- * Anzeige der Galerrien
- * Download der ZIP-Dateien
+ * Anzeige der Galerien
+ * Download der ZIP-Dateien von Galerien
  * @author: Beate Gericke (Nebenautor), Gerrit Storm (Hauptautor)
  */
 class Gallery extends Controller
@@ -12,7 +12,6 @@ class Gallery extends Controller
      * implementierung der Funktion run
      */
     public function run(){
-
 
 //download des ZIP Archives       
         if(isset($_REQUEST['download'])
@@ -31,9 +30,7 @@ class Gallery extends Controller
         // Auswahl des korrekten Templates - Gallery
         $this->display("gallery");
     }// run()
-
-
-     
+  
      /**
       * Funktion zum Anzeigen des Gallery-Objekts mit der gewaehlten id
       * @param int $id Gallerie-ID

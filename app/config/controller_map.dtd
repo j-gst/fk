@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- @author : Gerrit Storm -->
+<!ELEMENT controllers  ( controller+ )>
+<!ELEMENT controller  ( rights? , parameter , c_name )>
+<!ELEMENT c_name  ( #PCDATA )>
+<!ELEMENT parameter  ( #PCDATA )>
+<!ELEMENT rights  ( right )>
+<!ELEMENT right  ( #PCDATA )>

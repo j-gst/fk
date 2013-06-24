@@ -1,9 +1,12 @@
 /*
-@autor: Beate gericke, Gerrit Storm, Maike Schröder
+* Zentrale CSS-Datei
+* @author: Beate Gericke, Maike Schroeder, Gerrit Storm, 
 */
 
 
-/*festlegung der schriftart  */
+
+/* *****  allgemeine Formatierung body und img  ******************* */
+/* @author: Beate Gericke */
 body{
 	/*font-family: helvetica;*/
 	font: small arial, helvetica, sans-serif;
@@ -17,52 +20,10 @@ img{
 	vertical-align: middle;
 }
 
-.gallery{
-	float: left;
-	width: 70%;
-	margin: 0px;
-	padding-top:20px;
-    padding-left: 15px;
-	clear:both;
-    background-color: #F0F0FF;
-}
-.gallery_header{
-	float:left; 
-	width:70%; 
-	padding:5px; 
-	margin-top:5px;
-}
-.gallery_desc{
-	overflow:auto;
-	max-height: 100px;
-}
 
 
-.gallery a{
-
-	
-	font-size:12px; 
-	color:blue; 
-	text-decoration:none; 
-}
-.gallery_image{
-	float: left;
-	width: 19%;
-	height: 100%;
-	
-	
-}
-.gallery_image img{
-
-  max-width: 95%;
-  max-height: 80%;
-  
-}
-
-
-
-
-
+/* ***** Grund Layout der Seite ********************************** */
+/* @author: Beate Gericke */
 .site{
 	width:1080px;
 	/* background-image: url(img/header.jpg);
@@ -70,24 +31,153 @@ img{
 	margin: auto;
 	margin-top: 0px;	
 	padding-top: 0px;	
-	
 	background-color: #efefef;
+}
+.sitecontent{
+		margin-top: 0px;
 }
 
 
+/* *****festlegung hintergrundbild,schriftart header *********************** */
+/* @author:  Beate Gericke, Gerrit Storm, Maike Schroeder */
+#header{
+	background-image: url(img/header.jpg);
+	height: 150px;
+	width: 100%;
+	font-family: Noteworthy;
+	font-size: 30px;
+	color: white;
+	padding: 0px;
+	margin:0px;
+}
+#header h1{
+	font-size: 60px;
+	text-align:center;
+	color: white;
+	padding: 0px;
+	padding-top: 25px;
+	margin:0px;
+}
+
+
+
+/* ***** Bilder und Bildinfos ********************************** */
+/* @author: Beate Gericke, Gerrit Storm */
+.images {
+	float: left;
+	width: 70%;
+	margin: 0px;
+    padding: 0px;
+    background-color: #F0F0FF;
+}
+.imagearea {
+	width: 95%;
+	margin:10px;
+    float:left;
+	border-bottom: 1px solid #595959;
+	clear:both;
+}
+.image img{
+	max-height: 200px;
+}
+.image {
+	clear:both;
+	width: 55%;
+	height:200px;
+	/*overflow: hidden;*/
+	float: left;
+	margin: 5px;	
+}
+.imagetext {
+	width: 40%;
+	margin: 1px;
+	height: 200px;
+    padding: 5px;
+	/*background-color: #DDD;*/
+	overflow: hidden;
+	float: left;
+}
+
+
+
+
+/* ***** Kommentare ********************************** */
+/* @author:  Gerrit Storm */
+.singlecomment{
+	margin:3px;
+	padding:5px;
+}
+.comment {
+	font-weight:bold; 
+	font-size:14px; 
+	margin-right:10px;
+	float:right;
+	display: block;
+}
+.comment a { 
+	font-weight:bold; 
+	font-size:10px; 
+	color:blue; 
+	text-decoration:none; 
+	cursor : pointer;
+}
+.comment a:hover { font-weight:bold; color:red; text-decoration:none; }
+.comment a:active { font-weight:bold; color:lime; text-decoration:none; }
+.commentarea{
+    background-color:   #F0F0FF;
+	width: 100%;
+	max-height:300px;
+	float:left;
+	clear:both;
+	display:none;
+	overflow:auto;
+}
+.commentinput{
+    background-color:   #F0F0FF;
+	width: 100%;
+	height:200px;
+	float:left;
+	clear:both;
+	display:none;
+}
+
+
+
+/* ***** Pagination ********************************** */
+/* @author:  Gerrit Storm */
+.next{
+	float:right;
+	margin-bottom: 10px;
+}
+.next a { 
+	background-color: #DDD;
+	font-weight:bold; 
+	font-size:14px; 
+	color:blue; 
+	text-decoration:none; 
+	border: 1px solid #595958;
+	margin: 4px;
+	padding:2px;
+}
+.next a:hover { font-weight:bold; color:red; text-decoration:none; }
+.next a:active { font-weight:bold; color:lime; text-decoration:none; }
+
+
+
+
+
+/* ***** Hauptmenue ********************************** */
+/* @author:  Beate Gericke, Gerrit Storm */
 #menue_selected {
 	margin-top: -5px;
 	padding-top:5px;
 	height:25px;
 	background-color: silver;
 }
-
 .menue {
-	
 	height:30px;
 	background-color: #DDD;
 }
-
 .menue ul{
 	width: 1080px;
 	height: 20px;
@@ -97,7 +187,6 @@ img{
 	padding-top: 5px;
 	margin: 0px;
 }
-
 .menue li{
 	float: left;
 	width: 15%;	
@@ -105,17 +194,16 @@ img{
 	list-style-type:none;
 	/*background-color: grey;*/
 }
-
-.menue a{
-	
+.menue a{	
 	text-decoration:none;
 	font-weight:bold; 
 	color:black; 
-	
 	display: block;
 	/*background-color: #DDD;*/
 }
 .menue a:hover { font-weight:bold; color:red; text-decoration:none; }
+
+
 
 /**
 * Drop Down Menue
@@ -157,14 +245,22 @@ img{
 /****************************************************/
 
 
-
-
-
-
-
-.sitecontent{
-		margin-top: 0px;
+/* ***** Login ********************************** */
+/* @author:  Beate Gericke, Gerrit Storm */
+.login{
+	float: right;
+	margin-right:20px;
+	width: 25%;
+	margin-top: 0px;
+	padding: 5px;
+	background-color:   #F0F0FF;	
 }
+
+
+
+
+/* ***** Formularfelder ********************************** */
+/* @author:  Beate Gericke, Maike Schroeder, Gerrit Storm */
 .admin_field{
 	padding-left:10px;
 	width: 68%;
@@ -180,145 +276,58 @@ img{
 	font-weight:bold;
 	color:red;
 }
-
-
-
-.formular{
-	
-}
-
 .formerror{
 	color: #FF0000;
 }
-
-.images {
-	
-	float: left;
-	width: 70%;
-	margin: 0px;
-    padding: 0px;
-    background-color: #F0F0FF;
-
-}
-
-.imagearea {
-	width: 95%;
-	margin:10px;
-    float:left;
-	border-bottom: 1px solid #595959;
-	clear:both;
-
-}
-
-.image img{
-	max-height: 200px;
-}
-
-
-.image {
-	clear:both;
-	width: 55%;
-	height:200px;
-	/*overflow: hidden;*/
-	float: left;
-	margin: 5px;	
-	padding: auto;
-}
-
-.imagetext {
-	width: 40%;
-	margin: 1px;
-	height: 200px;
-    padding: 5px;
-	/*background-color: #DDD;*/
-	overflow: hidden;
-	float: left;
-}
-
-
-.singlecomment{
-	margin:3px;
-	padding:5px;
-
-}
-
-
-
-
-.comment {
-	font-weight:bold; 
-	font-size:14px; 
-	margin-right:10px;
-	float:right;
-	display: block;
-}
-
-.comment a { 
-	font-weight:bold; 
-	font-size:10px; 
-	color:blue; 
-	text-decoration:none; 
-	cursor : pointer;
-}
-.comment a:hover { font-weight:bold; color:red; text-decoration:none; }
-.comment a:active { font-weight:bold; color:lime; text-decoration:none; }
-
-.next{
-	float:right;
-	margin-bottom: 10px;
-}
-.next a { 
-	background-color: #DDD;
-	font-weight:bold; 
-	font-size:14px; 
-	color:blue; 
-	text-decoration:none; 
-	border: 1px solid #595958;
-	margin: 4px;
-	padding:2px;
-}
-.next a:hover { font-weight:bold; color:red; text-decoration:none; }
-.next a:active { font-weight:bold; color:lime; text-decoration:none; }
-
-
-
-.commentarea{
-    background-color:   #F0F0FF;
-	width: 100%;
-	max-height:300px;
-	float:left;
-	clear:both;
-	display:none;
-	overflow:auto;
-}
-
-.commentinput{
-    background-color:   #F0F0FF;
-	width: 100%;
-	height:200px;
-	float:left;
-	clear:both;
-	display:none;
-
-}
-
-
-.login{
-	float: right;
-	margin-right:20px;
-	width: 25%;
-	margin-top: 0px;
-	padding: 5px;
-	background-color:   #F0F0FF;
-	
-	
-}
-
-
 .send{
 	margin-left: 350px;
 }
+.info{
+  width: 15px;
+  height: 15px;
+  float: right;
+} 
+.categories{
+		display: block;
+}
+/*festlegung groesse/art/hoehe/laenge registerfelder*/
+.register label{
+	width: 120px;
+	display: inline-block;
+}
+.register input{
+	width: 300px;
+	height: 20px;
+	padding: 2px 5px;
+}
+/*festlegung hintergrund fuers formular*/
+.form-container{
+	margin: 20px auto;
+	padding: 15px;
+	width: 500px;
+	background:linear-gradient(#fcfcfc 0%, #ebebeb 100%);
+	background:webkit-linear-gradient(#fcfcfc 0%, #ebebeb 100%); /*noetig fuer chrome und safari*/
+}
+.form-container button{
+	width: 200px;
+	height: 30px;
+	font-size: 20px;
+	padding: 5px;
+	float: right;
+}
+.checkbox-categories label{
+	display: block;
+	line-height: 20px;
+}
+.checkbox-categories button{
+	margin: 18px;
+}
 
+
+
+
+/* ***** Formularfelder ********************************** */
+/* @author:  Beate Gericke, Maike Schroeder */
 .footer{
     clear:both;
 	background-color: #DDD;
@@ -328,7 +337,6 @@ img{
 	text-align:center;
 	
 }
-
 .footer a{
 	margin:5px;
 	font-weight:bold; 
@@ -339,98 +347,20 @@ img{
 
 
 
-
-
-.info{
-  width: 15px;
-  height: 15px;
-  float: right;
-} 
-
-
-	
-.categories{
-		display: block;
-}
-
-
 /* **********************************Help-Windows**************************************** */
-
 #all_help{
 	background-color: #ffffff;
-	
 }
-
-
 /* **************************************************************************** */
 
 
-/*festlegung hintergrundbild,schriftart header */
-#header{
-	background-image: url(img/header.jpg);
-	height: 150px;
-	width: 100%;
-	/*background-size: 100%;
-	background-position-y: -150px;*/
-	font-family: Noteworthy;
-	font-size: 30px;
-	color: white;
-	padding: 0px;
-	margin:0px;
-}
-
-#header h1{
-	font-size: 60px;
-	text-align:center;
-	color: white;
-	padding: 0px;
-	padding-top: 25px;
-	margin:0px;
-}
-
-
-
-/*menueleiste*/
-#navi{
-	position: relative;
-	width:100%;
-	height: 50px;
-	background-color: gray;
-}
-#navi > ul{
-	list-style-type: none;
-	padding:  0;
-	width: 75%;
-}
-#navi > ul > li{
-	width: 25%;
-	float:left;
-	padding: 0;
-	display: block;
-}
-
-#navi > ul > li:hover .dropdown-menue{
-	opacity: 1;
-	visibility: visible;
-}
-
-#navi ul li button{
-	display: block;
-	width: 100%;
-	font-size: 16px;
-	line-height: 24px;
-}
-
-
-
-
-/*festlegung der boxen*/
+/* ***** sidebar   ************************************ */
+/* @author:  Maike Schroeder */
 .sidebar-box{
 	border:black solid 1px;
 	border-radius: 6px;
 	background-color: white;
 	margin: 0 10px 20px;
-
 }
 .sidebar-box .title{
 	background: darkgrey;
@@ -448,7 +378,6 @@ img{
 	width: 100%;
 	display: block;
 	margin: 8px 8px 0;
-	
 }
 .sidebar-box .content input{
 	width: 90%;
@@ -457,7 +386,6 @@ img{
 .sidebar-box .content p {
 	margin: 2px;
 	padding: 0 5px;
-
 }
 .sidebar-box .content ul{
 	list-style-type: none;
@@ -473,77 +401,15 @@ img{
 
 
 
-/*festlegung fotoboxen*/
-.box_big{
-	width: 100%;
-}
-.foto-text{
-	width: 30%;
-	margin: 1% 2% 1% 1%;
-	font-size: 15px;
-	float: right;
-	font-family: Noteworthy;
-}
-.foto-text h2{
-	margin: 0;
-	padding: 0;
-}
-.foto{
-	float:left;
-	width: 60%;
-	margin:2%;
-}
-.foto img {
-	width: 100%;
-}
 
-/*festlegung groesse/art/hoehe/laenge registerfelder*/
-.register label{
-	width: 120px;
-	display: inline-block;
-}
-.register input{
-	width: 300px;
-	height: 20px;
-	padding: 2px 5px;
-}
-/*festlegung hintergrund fuers formular*/
-.form-container{
-	margin: 20px auto;
-	padding: 15px;
-	width: 500px;
-	background:linear-gradient(top,#fcfcfc 0%, #ebebeb 100%);
-	background:-webkit-linear-gradient(top,#fcfcfc 0%, #ebebeb 100%); /*noetig fuer chrome und safari*/
-	
-}
-.form-container button{
-	width: 200px;
-	height: 30px;
-	font-size: 20px;
-	padding: 5px;
-	float: right;
-}
-
-
-
-.checkbox-categories label{
-	display: block;
-	line-height: 20px;
-}
-
-.checkbox-categories button{
-	margin: 18px;
-	}
-
-/*zum zurueksetzen des floats*/
-
+/* ***** FAQ, AGB, Datenschutz   ************************************ */
+/* @author:  Maike Schroeder */
 .clear{
 	clear: both;
 }
 .center{
 	text-align: center;
 }
-
 .content-full{
 	width: 100%;
 }
@@ -555,9 +421,97 @@ img{
 	padding: 10px;
 }
 
-/*#footer{
-clear:both;
-	background-color: silver;
-	height: 60px;
+
+
+
+/* ***** Galerie Seite ********************************** */
+/* @author: Gerrit Storm */
+.gallery{
+	float: left;
+	width: 70%;
+	margin: 0px;
+	padding-top:20px;
+    padding-left: 15px;
+	clear:both;
+    background-color: #F0F0FF;
+}
+.gallery_header{
+	float:left; 
+	width:70%; 
+	padding:5px; 
+	margin-top:5px;
+}
+.gallery_desc{
+	overflow:auto;
+	max-height: 100px;
+}
+.gallery a{
+	font-size:12px; 
+	color:blue; 
+	text-decoration:none; 
+}
+.gallery_image{
+	float: left;
+	width: 19%;
+	height: 100%;
+}
+.gallery_image img{
+  max-width: 95%;
+  max-height: 80%;
+  
+}
+/* ******************************************************* */
+
+
+
 	
-}*/
+/* ***** Admin Seite ********************************** */
+/* @author: Gerrit Storm */
+#admin_navi ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+	
+#admin_navi li {
+	display: inline;
+	margin: 0 2px 0 0;
+}
+	
+#admin_navi a {
+	padding: 0 1em;
+	text-decoration: none;
+	color: #a80;
+	background: #fe5;
+}
+#admin_navi a:hover {
+	background: #fc0;
+	color: #540;
+}
+#admin_navi #admin_navi_selected {}
+	
+#admin_navi #admin_navi_selected a {
+	padding-bottom: 2px;
+	font-weight: bold;
+	color: black;
+	color: black;
+	background: #fc0;
+}
+#admin_content {
+	border-top: 2px solid white;
+	background: #fc0;
+	padding: 1em;
+}
+#admin_content p {
+	margin: 0;
+	padding: 1em;
+	background: white;
+}
+#admin_h2 {
+	font-size: 1.5em;
+	color: #fc0;
+}
+/* ******************************************************* */
+
+
+

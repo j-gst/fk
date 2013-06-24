@@ -1,6 +1,6 @@
 <?php 
 /**
- * HTML Header
+ * HTML Footer
  * @author  Beate Gericke, Gerrit Storm
  */
 ?>	

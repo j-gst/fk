@@ -2,12 +2,12 @@
 namespace controllers;
 /**
  * Upload Controller
- * bearbeiten der Datei uploads (Bild- und ZIP-Dateien)
+ * Datei uploads (Bild- und ZIP-Dateien)
+ * Speicherung der Bilder im Dateisystem und der Bildinformationen in der DB
  * @author: Beate Gericke , Gerrit Storm
  */
 class Upload extends Controller
 {
-
     private $uploaderror = "";
 
     /**
@@ -40,7 +40,6 @@ class Upload extends Controller
         $this->display("upload");
     }//run()
      
-
 
     /**
      * Funktion handelUpload
@@ -108,10 +107,7 @@ class Upload extends Controller
                 if($aInsertId !== false){
                     $dbInsertArray['ArchiveId'] = $aInsertId;
                 }
-                 
-                 
-                 
-                 
+
                 // Dateien einlesen
                 while (false !== ($fileName = readdir($dirHandle))) {
                     // skip . und ..
@@ -167,8 +163,6 @@ class Upload extends Controller
         }
     }// saveImageToDB()
 
-
-
     /**
      * Speichern des Bildes in DB und Dateisystem
      * @param array $dbInsertArray
@@ -192,8 +186,6 @@ class Upload extends Controller
         }
         return true;
     } // private function savePicture()
-
-
 
     /**
      * Check ob korrekter DateiTyp
@@ -268,9 +260,6 @@ private function makeThumbnail($filename){
      
 }//makeThumbnail()
 
-
-
-
 /**
  * Rekursives Loeschen einer Datei / eines Verzeichnisses
  * benoetigt fuer das temp. Entpacken der zip Dateien
@@ -291,7 +280,4 @@ private function remove($path) {
         unlink($path);
     }
 } // private function remove()
-
-
-
-} ?>
+} //class ?>

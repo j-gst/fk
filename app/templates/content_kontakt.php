@@ -1,7 +1,10 @@
-<!-- die Kontaktseite -->
-<!-- Thies Schillhorn, 20130612 -->
-
-<!-- Ausgabe und Aktion der Kontaktformularseite -->
+<?php 
+/**
+ * Kontaktseite
+ * Ausgabe und Aktion der Kontaktformularseite 
+ * @author TThies Schillhorn 
+ */
+?>
 <div class="kontakt" >
 <h2>Kontakt</h2>
 <?php

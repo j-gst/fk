@@ -1,7 +1,7 @@
 <?php
 namespace controllers;
 /**
- * Klasse Admin
+ * Controller Admin
  * Rechteverwaltung
  * Benutzerverwaltung
  * @author: Gerrit Storm
@@ -22,13 +22,14 @@ class Admin extends Controller
 
 
     /**
-     * die Funktion run wird implementiert
+     * die Methode run() wird implementiert
+     * Einstiegspunkt in den Controller
      */
     public function run(){
         $saveMsg = false;
         $subpage = "";
 
-// save Benutzer 
+        // save Benutzer
         if(isset($_REQUEST["save_user"])){
             if($this->saveUserToDB()){
                 $saveMsg = true;
@@ -36,29 +37,29 @@ class Admin extends Controller
             $this->getUserListFromDB();
             $subpage = 'user';
         }
-//Rechte speichern
+        //Rechte speichern
         elseif(isset($_REQUEST["save_rights"])){
             $this->saveRightsToDB();
             $this->getRightsValues();
             $subpage = 'rights';
             $saveMsg = true;
         }
-// edit Benutzer
+        // edit Benutzer
         elseif(isset($_REQUEST['id'])){
             if($this->getUserFromDB($_REQUEST['id'])){
                 $subpage = 'user_edit';
             }
-//Anzeige Rechte
+            //Anzeige Rechte
         }elseif( !isset($_REQUEST['m']) || (isset($_REQUEST['m']) && $_REQUEST['m'] == 'r')){
             $this->getRightsValues();
             $subpage = 'rights';
-//Anzeige Benutzer            
+            //Anzeige Benutzer
         } elseif(isset($_REQUEST['m']) && $_REQUEST['m'] == 'u'){
             $subpage = 'user';
             $this->getUserListFromDB();
         }
 
-   
+         
         $this->displayData['saveMsg'] = $saveMsg;
         $this->displayData['subpage'] = $subpage;
         $this->display("admin");
@@ -77,7 +78,7 @@ class Admin extends Controller
         $this->displayData['rolelist'] = $this->db->query_array($q);
     }//getUserListFromDB
 
-    
+
     /**
      * speziellen Benutzer aus DB laden
      * @param int $id Benutzer-ID
@@ -124,7 +125,7 @@ class Admin extends Controller
                     }
                 }
             }//foreach
-        }//foreach($this->toCheck as $key => $check) 	
+        }//foreach($this->toCheck as $key => $check)
     }//getRightsValues()
 
 
@@ -144,10 +145,10 @@ class Admin extends Controller
         return $this->db->query($q);
 
     }//saveUserToDB()
-    
-    
+
+
     /**
-	 * Rechte zu einer Rolle in DB speichern
+     * Rechte zu einer Rolle in DB speichern
      */
     private function saveRightsToDB(){
 
@@ -164,7 +165,7 @@ class Admin extends Controller
 			JOIN FK_Role ON FK_Role.Id = FK_Right_Role.RoleId WHERE FK_Role.Name != "admin"');
         $roleRights = $this->db->query_array($q);
 
-        	
+         
         //alle Aenderungsoptionen durchgehen
         foreach($this->toCheck as $key => $check){
             //muss ein Recht hinzugefuegt werden?
@@ -189,7 +190,7 @@ class Admin extends Controller
                         }
                     }
                 }
-            //muss ein Recht geloescht werden?
+                //muss ein Recht geloescht werden?
             }else{
                 if(!isset($toDelete[$check[0]])){ $toDelete[$check[0]]=array();}
                 //alle Kombinationen Rolle-Recht durchgehen
@@ -231,5 +232,5 @@ class Admin extends Controller
 
 
 
-}//class 
+}//class
 ?>

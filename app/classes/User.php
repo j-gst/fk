@@ -1,6 +1,7 @@
 <?php namespace classes;
 /**
  * Das User Objekt speichert alle relevanten Daten zum User
+ * und bietet Methoden zum Prüfen von Rechten und Login-Status
  * @author: Gerrit Storm
  */
 class User{

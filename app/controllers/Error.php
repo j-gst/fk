@@ -1,12 +1,13 @@
 <?php
 namespace controllers;
-/*
- * Klasse Error, erbt von der Klasse Controller
+/**
+ * Controller Error
+ * Dieser Controller dient dem Anzeigen einer Fehlerseite mit 
+ * etsprechender Fehlermeldung
+ * @author: Gerrit Storm
  */
 class Error extends Controller
 {
-  
-
    /**
     * die Funktion run wird implementiert
     * dem aktuellen Objekt wird ein assoziatives Array zugeordnet in dem Die Error-Nachrichten gespeichert werden
@@ -16,6 +17,4 @@ class Error extends Controller
         $this->displayData['errorMsg'] = $this->errorMsg;
 		$this->display("error");
    }
-  
-
-} ?>
+}//class ?>

@@ -1,6 +1,5 @@
 <?php
 namespace controllers;
-
 /**
  * Login Controller
  * zustaendig fuer login und logout
@@ -8,28 +7,26 @@ namespace controllers;
  */
 class Login extends Controller
 {
-
-
-	/**
-	 *
-	 *
-	 */
+    /**
+     * die Methode run() wird implementiert
+     * Einstiegspunkt in den Controller
+     */
 	public function run(){
-		//login
+	    
+//login
 		if( isset($_REQUEST['action']) && $_REQUEST['action'] === 'login' ){
 			if($this->login()){
 				$_SESSION['loginMsg'] = "";
 			}else{
 				$_SESSION['loginMsg'] = "Login fehlgeschlagen!";
 			}
-			//logout
+//logout
 		}elseif ( isset($_REQUEST['action']) && $_REQUEST['action'] === 'logout' ){
 			$this->logout();
 		}
 		header( 'Location: index.php' ) ;
 
 	} // run()
-
 
 	/**
 	 * Laed User Daten aus der DB
@@ -64,7 +61,6 @@ class Login extends Controller
 		return false;
 	} // login()
 
-
 	/**
 	 * Session wird geloescht
 	 */
@@ -76,11 +72,9 @@ class Login extends Controller
 	/**
 	 * Test ob das Passwort korrekt ist
 	 * @return: boolean
+	 * @todo implement salt
 	 */
 	public function checkPassword($hash , $pass){
 		return (sha1($pass) === $hash);
 	}
-
-
-
 } ?>

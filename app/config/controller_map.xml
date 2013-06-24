@@ -1,9 +1,8 @@
-<?xml version='1.0' standalone='yes'?>
-
-<!--Festlegung page-Parameter zu Seiten-Controller-->
-<!--und der benoetigten Rechte-->
-<!--Author: Gerrit Storm-->
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE controllers SYSTEM "controller_map.dtd">
+<!-- Festlegung page-Parameter zu Seiten-Controller -->
+<!-- und der benoetigten Rechte -->
+<!-- Author: Gerrit Storm -->
 <controllers>
     <controller>
         <parameter>main</parameter>

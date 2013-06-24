@@ -1,6 +1,9 @@
 <?php namespace controllers;
-// Klasse Search, erbt von Controller
-// 20130526 Thies Schillhorn
+/**
+ * Klasse Search, erbt von Controller
+ * Anzeige der Ergebnisse einer Suche ueber das Suchfeld
+ * @author Thies Schillhorn, Gerrit Storm
+ */
 class Search extends Controller
 {
     /*
@@ -14,7 +17,6 @@ class Search extends Controller
 
         $this->display("search");
     }//run
-
 
     /**
      * Suche Bilder der angegebenen Kategorie / Suchbegriffs;
@@ -39,7 +41,6 @@ WHERE ".$query." AND PictureState != -1;" ;
         return $this->showResult($sql);
     }
 
-
     /**
      * Initializierung zur Anzeige der gefunden Bilder
      */
@@ -57,7 +58,7 @@ WHERE ".$query." AND PictureState != -1;" ;
                 $displayImages[$key]->date = $date->format('d.m.Y H:i:s');
                 $displayImages[$key]->user = isset($img['UserName']) ? $img['UserName'] : 'Gast';
                 $displayImages[$key]->desc = nl2br(htmlentities($img['Description']));
-   
+                 
                 // zu jedem Bild noch die Kommentare laden
                 $q = sprintf('SELECT UserName,Comment,CreaDateTime
 FROM FK_Comments LEFT JOIN FK_User ON UserId = FK_User.Id
@@ -77,9 +78,7 @@ WHERE  CommentState != -1 AND  PictureId = %d ORDER BY CreaDateTime ',$img['Id']
                 }
             }// foreach($images as $key => $img)
         }
-
         return $displayImages;
     }
-
 }
 ?>

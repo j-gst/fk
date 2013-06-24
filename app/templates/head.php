@@ -49,9 +49,8 @@
 	Filter nach:
 	</li>
 	
-	
 	<li>
-<?php /** @author Maike Scroeder */?>
+<?php /** @author Maike Scroeder (Ausklappmenue) */?>
 	    <a href="#">Benutzer</a>
           <div class="dropdown-menue">
                 <ul>
@@ -62,22 +61,16 @@
                  </ul>
            </div>
     </li>
-   	
-	
-	
+
     <li style="width:20%;">
 	    <input type="text" name="tosearch">
 	    <input type="submit" name="search" value="Suche">
 	</li>
 
-	
-
-	
 </ul>
 
 </div>
 </form>
-
 
 <div class="sitecontent">
 

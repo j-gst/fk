@@ -1,7 +1,7 @@
 <?php 
 /**
- * Template fuer die die Haupt/Uebersichts-Seite
- * @author Beate Gericke, Maike Schroeder
+ * Template fuer die die Registrieren-Seite
+ * @author Beate Gericke, Maike Schroeder (Grundgeruest erste statische HTML-Version)
  */
 ?>
 <?php if(!$displayData['registered']){ ?>

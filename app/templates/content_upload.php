@@ -1,6 +1,6 @@
 <?php 
 /**
- * Upload Formular
+ * Template Upload Formular
  * @author  Beate Gericke
  */
 ?>

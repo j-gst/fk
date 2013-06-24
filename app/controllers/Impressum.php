@@ -1,8 +1,8 @@
 <?php
 namespace controllers;
 /**
- * @author Thies Schillhorn
  * Klasse Impressum dient zur Darstellung der Impressumstexte und ist abgeleitet von der Controllerklasse
+ * @author Thies Schillhorn
  */
 class Impressum extends Controller
 {
@@ -13,5 +13,4 @@ class Impressum extends Controller
         $this->displayData['impressum'] = $this->conf->impressum;
         $this->display("impressum");
     }
-
 } ?>

@@ -27,7 +27,6 @@ abstract class Controller
 //Konstruktor
 
     /**
-     * 
      * Bei der Instanzierung werden die benoetigten Objekte uebergeben und zugewiesen
      * @param unknown_type $user
      * @param unknown_type $db

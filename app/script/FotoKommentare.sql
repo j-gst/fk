@@ -1,8 +1,8 @@
----------------------------------------------------
+-- -------------------------------------------------
 -- DB-Script
 -- Automatisches Erstellen und initiales Befuellen der Datenbank.
 -- @author: Thies Schillhorn, Gerrit Storm
----------------------------------------------------
+-- -------------------------------------------------
 
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;

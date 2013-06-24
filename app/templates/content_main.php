@@ -1,7 +1,7 @@
 <?php 
 /**
  * Template fuer die die Haupt/Uebersichts-Seite
- * @author Gerrit Storm, Beate Gericke (Nebenautor), Maike Schroeder (Grundgeruest erste HTML-Version)
+ * @author Gerrit Storm, Beate Gericke (Nebenautor), Maike Schroeder (Grundgeruest erste statische HTML-Version)
  */
 ?>
 

@@ -4,69 +4,8 @@
  * @author Gerrit Storm
  */
 ?>
-
-
-	<style type="text/css" media="all">
-	
-	/* body {
-		font: small arial, helvetica, sans-serif;
-	} */
-	
-	#admin_navi ul {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-	}
-	
-	#admin_navi li {
-		display: inline;
-		margin: 0 2px 0 0;
-	}
-	
-	#admin_navi a {
-		padding: 0 1em;
-		text-decoration: none;
-		color: #a80;
-		background: #fe5;
-	}
-	
-	#admin_navi a:hover {
-		background: #fc0;
-		color: #540;
-	}0123456789a
-	
-	#admin_navi #admin_navi_selected {
-	}
-	
-	#admin_navi #admin_navi_selected a {
-		padding-bottom: 2px;
-		font-weight: bold;
-		color: black;
-		color: black;
-		background: #fc0;
-	}
-	
-	#admin_content {
-		border-top: 2px solid white;
-		background: #fc0;
-		padding: 1em;
-	}
-	
-	#admin_content p {
-		margin: 0;
-		padding: 1em;
-		background: white;
-	}
-	
-	h1 {
-		font-size: 1.5em;
-		color: #fc0;
-	}
-	
-	</style>
-	
 <div class="admin_field">
-<h1>Administrationsbereich</h1>
+<h2 id="admin_h2" >Administrationsbereich</h2>
 
 <div id="admin_navi">
 <ul>

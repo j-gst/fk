@@ -5,14 +5,23 @@
  */
 class imageArea
 {
+    // Titel des Bildes
     public $titel;
+    
+    // DB id
 	public $id;
+	
+	// userID des Besitzers
 	public $userId;
+	
+	// Datum des Uploads
 	public $date;
+	
+	// Besitzer des Bildes
 	public $user;
+	
+	// Beschreibung zum Bild
 	public $desc;
-	public $thumbnail;
-	public $imgLink;
 	
 	// Kommentarzaehler
 	public $commentsCount = 0; 

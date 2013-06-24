@@ -1,8 +1,8 @@
 <?php
 namespace controllers;
 /**
- *  Klasse Main, erbt von Controller
- *  - Anzeige der Bildseite mit Beschreibung und Kommentaren
+ * Controller Main
+ * - Anzeige der Bildseite mit Beschreibung und Kommentaren
  * - Einzelbild anzeigen
  * - Thumbnail anzeigen
  * - Kommentar speichern 
@@ -47,10 +47,9 @@ class Main extends Controller
         
 
     }
+    
     /**
-     * 
      *  alle Daten zu den Bildern aus der DB laden
-     *
      */
     private function getImagesFromDB(){
         $offset = 0;
@@ -58,7 +57,7 @@ class Main extends Controller
         
          //Wenn die Variable offset, die mit 0 initialisiert wurde exisitiert und > 0 ist,
         if(isset($_REQUEST['p']) && (int)$_REQUEST['p'] > 0){
-            $offset = ((int)$_REQUEST['p'] - 1) * $this->conf->showImgNum; // ?? ja was genau wird dann ?? eine Abfrage mit diesem offset sird zum int geparst und um 1 verringert und dann  multipliziert mit ??
+            $offset = ((int)$_REQUEST['p'] - 1) * $this->conf->showImgNum;
             $this->displayData['p'] = (int)$_REQUEST['p'];
         }
          
@@ -146,7 +145,7 @@ class Main extends Controller
         if (! $image ) {
             die("Dieses Bild gibt es nicht.");
         }
-
+	    // Anzeige des Bildes
         header('Cache-Control: no-cache, no-store, max-age=0, must-revalidate');
         header('Pragma: no-cache');
         header( "Content-type: image/jpeg" );
@@ -162,7 +161,6 @@ class Main extends Controller
 
     
     /**
-     * 
      * Anzeige eines Thumnails
      * @param int $id
      */
@@ -188,7 +186,6 @@ class Main extends Controller
     }//showImageTN()
 
     /**
-     * 
      * Kommentar in DB speichern
      */
     private function saveCommentToDB(){

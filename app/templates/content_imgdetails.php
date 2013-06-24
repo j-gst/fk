@@ -2,11 +2,9 @@
 /**
  * die Bilddetail-Seite
  * Template fuer die generische Fehlerseite
- * @author Thies Schillhorn, 20130524
+ * @author Thies Schillhorn, Gerrit Storm, Beate Gericke
  */
 ?>
-
-
 <!-- im Inhaltsfeld werden die Details zu dem selektierten Bild aus der Datenbank ausgegeben. 
 Hier findet die Strukturierung des Inhaltes statt. -->
 <div
@@ -20,9 +18,7 @@ Hier findet die Strukturierung des Inhaltes statt. -->
 			<h2> <!--  Titel des Bildes -->
 				<?php echo $img->titel ?>
 			</h2>
-			
 		
-					
 			<div class="image"> <!-- Thumbnail des Bildes;  wird es geklickt, wird das Bild in originalgröße dargestellt -->
 	
 				<a href="index.php?image=<?php echo $img->id ?>" > 
@@ -47,8 +43,6 @@ Hier findet die Strukturierung des Inhaltes statt. -->
 
 				<?php echo $img->commentsCount; ?>
 				Kommentare
-
-
 
 			</div> <!--  class=comment-->
 			
