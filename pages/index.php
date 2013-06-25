@@ -14,7 +14,6 @@ $appPath = "../app/";
 $imgPah = "../../images/";
 /*
  /************************************************************/
- 
 
 // Startzeit Speichern
 defined('START_TIME') ? null : define('START_TIME', microtime(true));
@@ -22,6 +21,24 @@ defined('START_TIME') ? null : define('START_TIME', microtime(true));
 
 defined('APP_DIR') ? null : define('APP_DIR',$appPath);
 defined('IMG_DIR') ? null : define('IMG_DIR',$imgPah );
+
+
+
+// Pruefen ob die Pfade fuer Applikations- und Bilderverzeichnis korrekt sind
+if( 
+! ( file_exists(APP_DIR) 
+    && is_dir(APP_DIR) 
+    && is_readable(APP_DIR) 
+    && file_exists(APP_DIR) 
+    && is_dir(APP_DIR) 
+    &&  is_writable(IMG_DIR) ) 
+){
+    die("Es muessen noch Pfade fuer Applikations- und 
+          Bilderverzeichnis in der index.php angepasst werden, 
+          oder die Rechte fuer die Verzeichnisse sind falsch gesetzt.");
+}
+
+
 
 //registrieren der Classloader Funktion (s.u.)
 spl_autoload_register("classLoader");
