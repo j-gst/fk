@@ -44,7 +44,7 @@ class Login extends Controller
 			// User gefunden ?
 			if($user && count($user) > 0){
 				// PW korrekt ?
-				if($this->checkPassword($user[0]['Password'] , $_REQUEST['password'])){echo "BBB";
+				if($this->checkPassword($user[0]['Password'] , $_REQUEST['password'])){
 				$_SESSION['username'] = $user[0]['UserName'] ;
 				$_SESSION['id'] = $user[0]['Id'] ;
 				$_SESSION['role'] = $user[0]['Role'] ;

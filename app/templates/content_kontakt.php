@@ -27,7 +27,7 @@
     $formular = "<form class='kontakt' enctype='multipart/form-data' action='?page=kontakt&amp;action=save' method='post'>
 <table>
 <tr>
-<td colspan='2' class='pflichtfeld'><!-- Raum fuer evtl. Fehlermeldungsanzeige --></td>
+<td colspan='2' class='pflichtfeld'><!-- Fehleranzeige --></td>
 </tr>
 <tr class='hintergrund'>
 <td>
@@ -90,12 +90,12 @@
         }
         if (strlen($betreff) < 5)
         {
-            $eingabefehler .= "&bull; Eine Angabe eines sinnvollen Betreffs" . ((strlen($betreff) == 0) ? " ist erforderlich" : " muss ausf?hrlicher sein!<br>");
+            $eingabefehler .= "&bull; Eine Angabe eines sinnvollen Betreffs" . ((strlen($betreff) == 0) ? " ist erforderlich" : " muss ausf&uuml;hrlicher sein!<br>");
             $fehlercount += 1;
         }
         if (strlen($nachricht) < 30)
         {
-            $eingabefehler .= "&bull; Bitte beschreiben Sie in der Nachricht Ihr Anliegen" . ((strlen($nachricht) == 0) ? "" : " ausf?hrlicher!<br>");
+            $eingabefehler .= "<br>&bull; Bitte beschreiben Sie in der Nachricht Ihr Anliegen" . ((strlen($nachricht) == 0) ? "" : " ausf&uuml;hrlicher!<br>");
             $fehlercount += 1;
         }
 
@@ -135,6 +135,7 @@ Nachricht: $nachricht
             echo str_replace("<!-- Fehleranzeige -->",
                              "<b>Ihre Nachricht konnte aus folgende". (($fehlercount == 1) ? "m Grund" : "n Gr&uuml;nden") . " noch nicht versendet:</b><br>"
                              . $eingabefehler, $formular);
+                         
         }
     }
     else
