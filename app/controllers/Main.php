@@ -19,6 +19,12 @@ class Main extends Controller
     public function run(){
          
 
+        
+// Filter gesetzt? - Dann in SESSION uebernehmen
+    if (  isset($_REQUEST['ufilter']) ){
+           $_SESSION['ufilter'] = $_REQUEST['ufilter'];      
+    }
+        
          
 //Einzelbild anzeigen 
         if (  isset($_REQUEST['image']) ){
@@ -61,17 +67,25 @@ class Main extends Controller
             $this->displayData['p'] = (int)$_REQUEST['p'];
         }
          
+        // Filter gesetzt?
+        $filter = ""; 
+        if(isset($_SESSION['ufilter']) && $_SESSION['ufilter'] !== "0"){
+            if($_SESSION['ufilter'] == 1)   $filter = " AND UserName IS NULL "; 
+            else $filter = ' AND UserName = "'.$_SESSION['ufilter'].'"';
+        }
+        
         // query String
         $q = sprintf('SELECT FK_Picture.Id, Name, CreaDateTime, Description, UserName, ArchiveId
-			FROM FK_Picture LEFT JOIN FK_User ON FK_User.Id = FK_Picture.UserId WHERE  PictureState != -1 
-			ORDER BY CreaDateTime DESC LIMIT %d, %d', $offset, $this->conf->showImgNum);
-         
+                  FROM FK_Picture LEFT JOIN FK_User ON FK_User.Id = FK_Picture.UserId WHERE  PictureState != -1 %s
+			      ORDER BY CreaDateTime DESC LIMIT %d, %d',$filter, $offset, $this->conf->showImgNum);
+        
+        
         // alle Bildinformationen aus der DB laden
         $images = $this->db->query_array($q);
         $displayImages = array();
         
         // Bildinformationen fuer die Anzeige im Template speichern
-        foreach($images as $key => $img){
+        if($images !== false) foreach($images as $key => $img){
             $displayImages[$key] = new \classes\imageArea();
             $displayImages[$key]->id = $img['Id'];
             $displayImages[$key]->titel = htmlentities($img['Name']);
@@ -109,9 +123,18 @@ class Main extends Controller
      * Je nachdem wird errechnet, wieviele Seiten benoetigt werden
      */
     private function getPagination(){
+        
+        // Filter gesetzt?
+        $filter = ""; 
+        if(isset($_SESSION['ufilter']) && $_SESSION['ufilter'] !== "0"){
+            if($_SESSION['ufilter'] == 1)   $filter = " AND UserName IS NULL "; 
+            else $filter = ' AND UserName = "'.$_SESSION['ufilter'].'"';
+        }
 
         // Anzahl der Bilder in der DB
-        $q = "SELECT COUNT(Id) AS COUNT FROM FK_Picture WHERE PictureState != -1";
+        $q = sprintf("SELECT COUNT(FK_Picture.Id) AS COUNT FROM FK_Picture 
+                      LEFT JOIN FK_User ON FK_User.Id = FK_Picture.UserId 
+                      WHERE PictureState != -1 %s",$filter);
         $count = $this->db->query_array($q); 
         
         // die Anzahl der anzuzeigenden Seiten wird ermittelt

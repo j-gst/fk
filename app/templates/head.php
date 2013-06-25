@@ -46,18 +46,20 @@
            </div>
 	</li>
 	<li  style="text-align:right;">
-	Filter nach:
+	Filter: <?php if(isset($_SESSION["ufilter"]) && $_SESSION["ufilter"] !== "0")  
+	                    echo "(" , $_SESSION["ufilter"] == 1 ? "Gast" : $_SESSION["ufilter"] ,")"; 
+	       ?>
 	</li>
-	
 	<li>
 <?php /** @author Maike Scroeder (Ausklappmenue) */?>
 	    <a href="#">Benutzer</a>
           <div class="dropdown-menue">
                 <ul>
-                     <li><a href="#">User 1</a></li>
-                     <li><a href="#">User 2</a></li>
-                     <li><a href="#">User 3</a></li>
-                     <li><a href="#">User 4</a></li>
+                <li><a href="index.php?ufilter=0">Alle</a></li>
+                <li><a href="index.php?ufilter=1">Gast</a></li>
+                <?php foreach ($config->userList as $u ){?>     
+                     <li><a href="index.php?ufilter=<?php echo $u ?>"><?php echo $u ?></a></li>
+                <?php } // foreach?>
                  </ul>
            </div>
     </li>

@@ -120,6 +120,7 @@ abstract class Controller
     protected function display($contentTpl){
         $displayData = $this->displayData;
         $user = $this->user;
+        $config = $this->conf;
         include_once APP_DIR."templates/main.php";
     } //display()
 

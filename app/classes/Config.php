@@ -25,7 +25,7 @@ class Config{
     public $impressum = "...";
     public $mymail = "beispiel@beispielfirma.de";
 
-
+    public $userList = array();
 
 
     /**
@@ -38,6 +38,8 @@ class Config{
          */
         $confFile=APP_DIR.'config/config.xml';
        
+       
+        
         if (@file_exists($confFile)!== false) {
             /**
              * Einlesen der XML-Konfigurationsdatei und speichern
@@ -99,6 +101,24 @@ class Config{
              */
             echo '<br>'. "Es konnte keine Konfigurationsdatei gefunden werden!".'<br>';
         }
-    }
+         $this->getUserList();
+    }//construct
+    
+    /**
+     * Benutzer Liste fuer die Filterung im Hauptmenue
+     */
+    private function getUserList(){
+        
+        $db = new \classes\MysqlDB( $this->DB_host, $this->DB_user,
+                                   $this->DB_pw, $this->DB_db,$this->DB_showErrors);
+        $q = 'SELECT UserName, Id FROM FK_User ORDER BY UserName';
+
+        $users = $db->query_array($q);
+        foreach($users as $user){
+            $this->userList[]= $user['UserName'];
+        }
+        
+        //var_dump($users);
+    }//getUserList
 }
 ?>
