@@ -32,7 +32,7 @@ class Main extends Controller
         }elseif ( isset($_REQUEST['tn']) && isset($_REQUEST['id']) ){
               $this->showImageTN($_REQUEST['id']);
 //Kommentar speichern              
-        }	elseif ( isset($_REQUEST['save_comment']) && isset($_REQUEST['id']) ){
+        }elseif ( isset($_REQUEST['save_comment']) && isset($_REQUEST['id']) ){
             // Fehlerseite zeigen wenn Recht save_comment nicht vorhanden
             $this->redirectOnInsufficientRights(array('comment_make'));
             $this->saveCommentToDB();
