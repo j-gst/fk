@@ -18,15 +18,15 @@
 						</div>
 					<div class="checkbox-categories">
 						<p>Kategorie/n:</p>
-							<input type="checkbox" name="Kategorien" value="Landschaft">Landschaft
-							<input type="checkbox" name="Kategorien" value="Portraits">Portrais
-							<input type="checkbox" name="Kategorien" value="Kinder">Kinder
-							<input type="checkbox" name="Kategorien" value="Familie">Familie
+							<input type="checkbox" name="Kategorien" value="Landschaft">Landschaft<br>
+							<input type="checkbox" name="Kategorien" value="Portraits">Portrais<br>
+							<input type="checkbox" name="Kategorien" value="Kinder">Kinder<br>
+							<input type="checkbox" name="Kategorien" value="Familie">Familie<br>
 						
 							<input type="submit" value="hochladen">
 					</div>	
 					<div class="info">
-						<img alt="helpimg" src="../public/styles/img/icon_question.gif" id="helpWindow" onclick="openHelpWindow(uploadHelp.php);"/>
+						<!--  <img alt="helpimg" src="../public/styles/img/icon_question.gif" id="helpWindow" onclick="openHelpWindow(uploadHelp.php);"/> -->
 					</div>
 					</fieldset>
 				</form>
