@@ -8,7 +8,6 @@ namespace controllers;
  * - Kommentar speichern 
  * @author Gerrit Storm, Beate Gericke
  */
-
 class Main extends Controller
 {
     
